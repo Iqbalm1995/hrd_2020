@@ -25,7 +25,7 @@
 			    </div>
 			</div>
 			<!-- End Simple Accordion -->
-			<a class="item"><i class="settings icon"></i> Settings</a>
+			<a class="item" href="<?= base_url('admin/divisions/') ?>"><i class="database icon"></i> Master Divisi & Posisi</a>	
 			<a class="item" href="<?= base_url('admin/user_admin/') ?>"><i class="user icon"></i> Pengguna</a>	
 			<a class="item" href="<?= base_url('admin/user_roles/') ?>"><i class="users icon"></i> Role / Hak Akses</a>	
 			<a class="item"><i class="sign out alternate icon"></i> Logout</a>
@@ -57,7 +57,7 @@
 			    </div>
 			</div>
 			<!-- End Simple Accordion -->
-			<div class="ui item">
+			<!-- <div class="ui item">
 				<div class="ui fluid selection dropdown moredropdown">
 					<div class="text">Menu</div>
 					<i class="dropdown icon"></i>
@@ -66,8 +66,8 @@
 						<p class="item">Choice 2</p>
 					</div>
 				</div>
-			</div>
-			<a class="item"><i class="settings icon"></i> Settings</a>	
+			</div>	 -->
+			<a class="item" href="<?= base_url('admin/divisions/') ?>"><i class="database icon"></i> Master Divisi & Posisi</a>		
 			<a class="item" href="<?= base_url('admin/user_admin/') ?>"><i class="user icon"></i> Pengguna</a>	
 			<a class="item" href="<?= base_url('admin/user_roles/') ?>"><i class="users icon"></i> Role / Hak Akses</a>
 			<a class="item"><i class="sign out alternate icon"></i> Logout</a>
