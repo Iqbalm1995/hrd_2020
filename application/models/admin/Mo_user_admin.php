@@ -7,7 +7,7 @@ class Mo_user_admin extends CI_Model {
 	var $table_users = 'usr_users';
 	var $column_order = array(null, 'username', 'name', 'email', 'status', 'role_name'); //set column field database for datatable orderable
 	var $column_search = array('username', 'name', 'email', 'status', 'role_name'); //set column field database for datatable searchable just firstname , lastname , address are searchable
-	var $order = array('id' => 'desc'); // default order 
+	var $order = array('id' => 'asc'); // default order 
 
 	public function __construct()
 	{
@@ -20,7 +20,22 @@ class Mo_user_admin extends CI_Model {
 		// $this->db->select('id,
 	 //  					   nama');
         $this->db->where('deleted =', '0');
+        $this->db->order_by('id', 'asc');
 		return $this->db->get($this->table_roles)->result();
+	}
+
+	public function check_username($username) 
+	{
+        $this->db->where('username =', $username);
+        $this->db->where('deleted =', '0');
+		return $this->db->get($this->table_users)->result();
+	}
+
+	public function check_email($email) 
+	{
+        $this->db->where('email =', $email);
+        $this->db->where('deleted =', '0');
+		return $this->db->get($this->table_users)->result();
 	}
 
 	private function _get_datatables_query()

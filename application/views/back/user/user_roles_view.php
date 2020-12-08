@@ -7,6 +7,7 @@
 				<div class="ui divider"></div>
 				<div class="ui grid">
 					<div class="sixteen wide computer sixteen wide phone centered column">
+						<?php echo $this->session->userdata('message1') <> '' ? $this->session->userdata('message1') : ''; ?>	
 						<!-- <div class="ui positive message">
 							<i class="close icon"></i>
 							<div class="header">
@@ -14,11 +15,14 @@
 							</div>
 							<p>This example page shows DataTables integrated with this template.</p>
 						</div> -->
-						<h4></h4>
 						<!-- BEGIN DATATABLE -->
 						<div class="ui stacked segment">
 							<div class="ui blue ribbon icon label">DATATABLE USER ROLE</div>
 							<br><br>
+							<div class="ui clearing segment">
+								<a href="<?php echo base_url('admin/user_roles/tambah'); ?>" class="ui right floated primary button"><i class="plus icon"></i>Tambah Role / Hak Akses</a>
+							</div>
+							<br>
 							<table id="tb_usr_roles" class="ui celled table responsive nowrap unstackable" style="width:100%">
 							    <thead>
 							        <tr>

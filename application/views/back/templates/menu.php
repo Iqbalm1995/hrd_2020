@@ -25,7 +25,9 @@
 			    </div>
 			</div>
 			<!-- End Simple Accordion -->
-			<a class="item"><i class="settings icon"></i> Settings</a>	
+			<a class="item"><i class="settings icon"></i> Settings</a>
+			<a class="item" href="<?= base_url('admin/user_admin/') ?>"><i class="user icon"></i> Pengguna</a>	
+			<a class="item" href="<?= base_url('admin/user_roles/') ?>"><i class="users icon"></i> Role / Hak Akses</a>	
 			<a class="item"><i class="sign out alternate icon"></i> Logout</a>
 			<a class="item" href="https://fomantic-ui.com/"><i class="heart icon"></i>More Components</a>
 			<div class="item" id="hidemobiletabletsidebar">
@@ -66,6 +68,8 @@
 				</div>
 			</div>
 			<a class="item"><i class="settings icon"></i> Settings</a>	
+			<a class="item" href="<?= base_url('admin/user_admin/') ?>"><i class="user icon"></i> Pengguna</a>	
+			<a class="item" href="<?= base_url('admin/user_roles/') ?>"><i class="users icon"></i> Role / Hak Akses</a>
 			<a class="item"><i class="sign out alternate icon"></i> Logout</a>
 			<a class="item" href="https://fomantic-ui.com/"><i class="heart icon"></i>More Components</a>
 			<a class="item"></a>

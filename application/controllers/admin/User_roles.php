@@ -26,6 +26,87 @@ class User_roles extends CI_Controller {
 		$this->load->view('back/templates/footerChart');
 	}
 
+	public function tambah()
+	{
+		$head['title_page'] = 'Tambah Role';
+		$data = array(
+			'aksi' 						=> 'tambah',
+			'action' 					=> base_url('admin/user_roles/proses_tambah'),
+			'id' 						=> set_value('id'),
+			'role_name' 				=> set_value('role_name'),
+			'desc' 						=> set_value('desc'),
+			'status' 					=> set_value('status')
+		);
+		
+        $this->load->view('back/templates/header', $head);
+		$this->load->view('back/templates/menu');
+		$this->load->view('back/user/user_roles_form', $data);
+		$this->load->view('back/templates/footerChart');
+	}
+
+	public function ubah($id = null)
+	{
+		if($id == null){
+			$this->session->set_flashdata('message1', '
+				<div class="ui red message">
+					<i class="close icon"></i>
+					<div class="header">
+						Gagal
+					</div>
+					<p>Error pada saat mengambil data</p>
+				</div>
+				');
+			redirect (base_url('admin/user_roles'));
+		}elseif($id == '1'){
+			$this->session->set_flashdata('message1', '
+				<div class="ui red message">
+					<i class="close icon"></i>
+					<div class="header">
+						Gagal
+					</div>
+					<p>Data Superadmin tidak bisa diubah</p>
+				</div>
+				');
+			redirect (base_url('admin/user_roles'));
+		}
+
+		$head['title_page'] = 'Ubah Role';
+		
+		$row = $this->user_groups->get_by_id($id);
+
+		if ($row) {
+
+			$data = array(
+				'aksi' 						=> 'ubah',
+				'action' 					=> base_url('admin/user_roles/proses_edit'),
+				'id' 						=> set_value('id', $row->id),
+				'role_name' 				=> set_value('role_name', $row->role_name),
+				'desc' 						=> set_value('desc', $row->desc),
+				'status' 					=> set_value('status', $row->status)
+			);
+
+			$this->load->view('back/templates/header', $head);
+			$this->load->view('back/templates/menu');
+			$this->load->view('back/user/user_roles_form', $data);
+			$this->load->view('back/templates/footerChart');
+
+		} else {
+
+			$this->session->set_flashdata('message1', '
+				<div class="ui positive message">
+					<i class="close icon"></i>
+					<div class="header">
+						Gagal
+					</div>
+					<p>Error pada saat mengambil data</p>
+				</div>
+				');
+			redirect (base_url('admin/user_roles'));
+
+		}
+
+	}
+
 	public function ajax_list()
 	{
 
@@ -49,24 +130,15 @@ class User_roles extends CI_Controller {
 					break;
 			}
 
-			$row[] = '-';
+			// $row[] = '-';
 
 			//add html for action
-			// if ($user_groups->id == 1) {
-			// 	$row[] = '<div class="text-center">-</div>';
-			// }else{
-			// 	$row[] = '<div class="text-center">
-			// 				<a class="btn btn-sm btn-primary" href="javascript:void(0)" 
-			// 					title="Edit" 
-			// 					onclick="edit_groups('."'".$user_groups->id."'".')">
-			// 					<i class="glyphicon glyphicon-pencil"></i></a>
-
-			// 				<a class="btn btn-sm btn-danger" href="javascript:void(0)" 
-			// 					title="Hapus" 
-			// 					onclick="delete_groups('."'".$user_groups->id."'".')">
-			// 					<i class="glyphicon glyphicon-trash"></i></a>
-			// 				</div>';
-			// }
+			if ($user_groups->id == '1') {
+				$row[] = '-';
+			}else{
+				$row[] = '<a class="mini ui teal button" href="'. base_url("admin/user_roles/ubah/".$user_groups->id) .'"><i class="pencil icon"></i>Ubah</a>
+						  <a class="mini ui red button" href="'. base_url("admin/user_roles/hapus/".$user_groups->id) .'"><i class="trash icon"></i>Hapus</a>';
+			}
 
 			$data[] = $row;
 		}
@@ -80,127 +152,132 @@ class User_roles extends CI_Controller {
 		//output to json format
 		echo json_encode($output);
 	}
+	
+	public function proses_tambah()
+	{
+		
+		date_default_timezone_set('Asia/Jakarta');
+		$create_by			= '1'; //admin
+		$create_at			= date("Y-m-d H:i:s");
 
+		$data = array(
+			'role_name' 				=> $this->input->post('role_name'),
+			'desc' 						=> $this->input->post('desc'),
+			'status' 					=> $this->input->post('status'),
+			'create_by' 				=> $create_by,
+			'create_at' 				=> $create_at
+		);
 
-	// public function ajax_edit($id)
-	// {
-	// 	$data = $this->user_groups->get_by_id($id);
-	// 	// $data->dob = ($data->dob == '0000-00-00') ? '' : $data->dob; // if 0000-00-00 set tu empty for datepicker compatibility
-	// 	echo json_encode($data);
-	// }
+		$this->user_groups->save($data);
 
-	// public function ajax_add()
-	// {
-	// 	$this->_validate();
+		$this->session->set_flashdata('message1', '
+			<div class="ui positive message">
+				<i class="close icon"></i>
+				<div class="header">
+					Berhasil
+				</div>
+				<p>Role / Hak akses berhasil ditambahkan.</p>
+			</div>
+			');
+		redirect (base_url('admin/user_roles'));
 
-	// 	$data = array(
-	// 			'nama' 						=> $this->input->post('nama'),
-	// 			'keterangan' 				=> $this->input->post('keterangan'),
-	// 			'akses_inbox' 				=> $this->input->post('akses_inbox'),
-	// 			'akses_karyawan' 			=> $this->input->post('akses_karyawan'),
-	// 			'akses_simpanan' 			=> $this->input->post('akses_simpanan'),
-	// 			'akses_pelunasan' 			=> $this->input->post('akses_pelunasan'),
-	// 			'akses_penjualan' 			=> $this->input->post('akses_penjualan'),
-	// 			'akses_peminjaman' 			=> $this->input->post('akses_peminjaman'),
-	// 			'akses_keuangan' 			=> $this->input->post('akses_keuangan'),
-	// 			'akses_drive' 				=> $this->input->post('akses_drive'),
-	// 			'akses_kategori' 			=> $this->input->post('akses_kategori'),
-	// 			'akses_setting' 			=> $this->input->post('akses_setting'),
-	// 		);
+	}
 
-	// 	$insert = $this->user_groups->save($data);
+	public function proses_edit()
+	{
+		
+		date_default_timezone_set('Asia/Jakarta');
+		$create_by			= '1'; //admin
+		$create_at			= date("Y-m-d H:i:s");
 
-	// 	echo json_encode(array("status" => TRUE));
-	// 	$this->session->set_flashdata('message1', '
-	// 		<div class="alert alert-info alert-dismissible" role="alert">
-    //           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    //           <strong>Berhasil <i class="glyphicon glyphicon-ok"></i></strong> Data telah di tambahkan
-    //         </div>
-	// 		');
-	// }
+		$data = array(
+			'role_name' 				=> $this->input->post('role_name'),
+			'desc' 						=> $this->input->post('desc'),
+			'status' 					=> $this->input->post('status')
+		);
 
-	// public function ajax_update()
-	// {
-	// 	$this->_validate();
+		$where = array('id' => $this->input->post('id'));
 
-	// 	$data = array(
-	// 			'nama' 						=> $this->input->post('nama'),
-	// 			'keterangan' 				=> $this->input->post('keterangan'),
-	// 			'akses_inbox' 				=> $this->input->post('akses_inbox'),
-	// 			'akses_karyawan' 			=> $this->input->post('akses_karyawan'),
-	// 			'akses_simpanan' 			=> $this->input->post('akses_simpanan'),
-	// 			'akses_pelunasan' 			=> $this->input->post('akses_pelunasan'),
-	// 			'akses_penjualan' 			=> $this->input->post('akses_penjualan'),
-	// 			'akses_peminjaman' 			=> $this->input->post('akses_peminjaman'),
-	// 			'akses_keuangan' 			=> $this->input->post('akses_keuangan'),
-	// 			'akses_drive' 				=> $this->input->post('akses_drive'),
-	// 			'akses_kategori' 			=> $this->input->post('akses_kategori'),
-	// 			'akses_setting' 			=> $this->input->post('akses_setting'),
-	// 		);
+		$this->user_groups->update($where, $data);
 
-	// 	$this->user_groups->update(array('id' => $this->input->post('id')), $data);
-	// 	echo json_encode(array("status" => TRUE));
-	// 	$this->session->set_flashdata('message1', '
-	// 		<div class="alert alert-info alert-dismissible" role="alert">
-    //           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    //           <strong>Berhasil <i class="glyphicon glyphicon-ok"></i></strong> Data telah di ubah
-    //         </div>
-	// 		');
-	// }
+		$this->session->set_flashdata('message1', '
+			<div class="ui positive message">
+				<i class="close icon"></i>
+				<div class="header">
+					Berhasil
+				</div>
+				<p>Role / Hak akses berhasil diubah.</p>
+			</div>
+			');
+		redirect (base_url('admin/user_roles'));
 
-	// public function ajax_delete($id)
-	// {
-	// 	$this->user_groups->delete_by_id($id);
-	// 	echo json_encode(array("status" => TRUE));
-	// 	$this->session->set_flashdata('message1', '
-	// 		<div class="alert alert-info alert-dismissible" role="alert">
-    //           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    //           <strong>Berhasil <i class="glyphicon glyphicon-ok"></i></strong> Data telah di hapus
-    //         </div>
-	// 		');
-	// }
+	}
 
-	// public function ajax_bulk_delete()
-	// {
-	// 	$list_id = $this->input->post('id');
-	// 	foreach ($list_id as $id) {
-	// 		$this->user_groups->delete_by_id($id);
-	// 	}
-	// 	echo json_encode(array("status" => TRUE));
-	// 	$this->session->set_flashdata('message1', '
-	// 		<div class="alert alert-info alert-dismissible" role="alert">
-    //           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    //           <strong>Berhasil <i class="glyphicon glyphicon-ok"></i></strong> Data telah di hapus
-    //         </div>
-	// 		');
-	// }
+	public function hapus($id = null)
+	{
+		if($id == null){
+			$this->session->set_flashdata('message1', '
+				<div class="ui red message">
+					<i class="close icon"></i>
+					<div class="header">
+						Gagal
+					</div>
+					<p>Error pada saat mengambil data</p>
+				</div>
+				');
+			redirect (base_url('admin/user_roles'));
+		}elseif($id == '1'){
+			$this->session->set_flashdata('message1', '
+				<div class="ui red message">
+					<i class="close icon"></i>
+					<div class="header">
+						Gagal
+					</div>
+					<p>Data Superadmin tidak bisa dihapus</p>
+				</div>
+				');
+			redirect (base_url('admin/user_roles'));
+		}
+		
+		$row = $this->user_groups->get_by_id($id);
 
-	// private function _validate()
-	// {
-	// 	$data = array();
-	// 	$data['error_string'] = array();
-	// 	$data['inputerror'] = array();
-	// 	$data['status'] = TRUE;
+		if(empty($row)){
+			$this->session->set_flashdata('message1', '
+				<div class="ui red message">
+					<i class="close icon"></i>
+					<div class="header">
+						Gagal
+					</div>
+					<p>Data tidak ditemukan</p>
+				</div>
+				');
+			redirect (base_url('admin/user_roles'));
+		}
+		
+		date_default_timezone_set('Asia/Jakarta');
+		$create_by			= '1'; //admin
+		$create_at			= date("Y-m-d H:i:s");
 
-	// 	if($this->input->post('nama') == '')
-	// 	{
-	// 		$data['inputerror'][] = 'nama';
-	// 		$data['error_string'][] = 'Nama Masih Kosong';
-	// 		$data['status'] = FALSE;
-	// 	}
+		$data = array(
+			'deleted' 		=> '1'
+		);
 
-	// 	if($this->input->post('keterangan') == '')
-	// 	{
-	// 		$data['inputerror'][] = 'keterangan';
-	// 		$data['error_string'][] = 'Keterangan Masih Kosong';
-	// 		$data['status'] = FALSE;
-	// 	}
+		$where = array('id' => $id);
 
-	// 	if($data['status'] === FALSE)
-	// 	{
-	// 		echo json_encode($data);
-	// 		exit();
-	// 	}
-	// }
+		$this->user_groups->update($where, $data);
+
+		$this->session->set_flashdata('message1', '
+			<div class="ui positive message">
+				<i class="close icon"></i>
+				<div class="header">
+					Berhasil
+				</div>
+				<p>Role / Hak akses berhasil dihapus.</p>
+			</div>
+			');
+		redirect (base_url('admin/user_roles'));
+
+	}
+
 
 }

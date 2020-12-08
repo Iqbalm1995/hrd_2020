@@ -3,10 +3,11 @@
 	<div class="ui container grid">
 		<div class="row">
 			<div class="fifteen wide computer sixteen wide phone centered column">
-				<h2><i class="table icon"></i> PENGATURAN USER</h2>
+				<h2><i class="table icon"></i> PENGATURAN PENGGUNA</h2>
 				<div class="ui divider"></div>
 				<div class="ui grid">
 					<div class="sixteen wide computer sixteen wide phone centered column">
+						<?php echo $this->session->userdata('message1') <> '' ? $this->session->userdata('message1') : ''; ?>
 						<!-- <div class="ui positive message">
 							<i class="close icon"></i>
 							<div class="header">
@@ -17,8 +18,12 @@
 						<h4></h4>
 						<!-- BEGIN DATATABLE -->
 						<div class="ui stacked segment">
-							<div class="ui blue ribbon icon label">DATATABLE USER ADMIN</div>
+							<div class="ui blue ribbon icon label">DATATABLE PENGGUNA</div>
 							<br><br>
+							<div class="ui clearing segment">
+								<a href="<?php echo base_url('admin/user_admin/tambah'); ?>" class="ui right floated primary button"><i class="plus icon"></i>Tambah Pengguna</a>
+							</div>
+							<br>
 							<table id="tb_usrs" class="ui celled table responsive nowrap unstackable" style="width:100%">
 							    <thead>
 							        <tr>

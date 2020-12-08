@@ -11,7 +11,7 @@ class Mo_user_groups extends CI_Model {
 							  'create_at',
 							  'create_by'); //set column field database for datatable orderable
 	var $column_search = array('role_name'); //set column field database for datatable searchable just firstname , lastname , address are searchable
-	var $order = array('id' => 'desc'); // default order 
+	var $order = array('id' => 'asc'); // default order 
 
 	public function __construct()
 	{

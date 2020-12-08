@@ -14,4 +14,10 @@ class Home extends CI_Controller {
 		$this->load->view('front/detailView');
 		$this->load->view('front/templates/footer');
 	}
+	public function button()
+	{
+		$this->load->view('front/templates/header');
+		$this->load->view('back/button_form');
+		$this->load->view('front/templates/footer');
+	}
 }
