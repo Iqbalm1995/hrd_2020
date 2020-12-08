@@ -282,6 +282,72 @@ class User_admin extends CI_Controller {
 		redirect (base_url('admin/user_admin'));
 
 	}
+
+	public function hapus($id = null)
+	{
+		if($id == null){
+			$this->session->set_flashdata('message1', '
+				<div class="ui red message">
+					<i class="close icon"></i>
+					<div class="header">
+						Gagal
+					</div>
+					<p>Error pada saat mengambil data</p>
+				</div>
+				');
+			redirect (base_url('admin/user_admin'));
+		}elseif($id == '1'){
+			$this->session->set_flashdata('message1', '
+				<div class="ui red message">
+					<i class="close icon"></i>
+					<div class="header">
+						Gagal
+					</div>
+					<p>Data Superadmin tidak bisa dihapus</p>
+				</div>
+				');
+			redirect (base_url('admin/user_admin'));
+		}
+		
+		$row = $this->user_admin->get_by_id($id);
+
+		if(empty($row)){
+			$this->session->set_flashdata('message1', '
+				<div class="ui red message">
+					<i class="close icon"></i>
+					<div class="header">
+						Gagal
+					</div>
+					<p>Data tidak ditemukan</p>
+				</div>
+				');
+			redirect (base_url('admin/user_admin'));
+		}
+		
+		date_default_timezone_set('Asia/Jakarta');
+		$create_by			= '1'; //admin
+		$create_at			= date("Y-m-d H:i:s");
+
+		$data = array(
+			'deleted' 		=> '1'
+		);
+
+		$where = array('id' => $id);
+
+		$this->user_admin->update($where, $data);
+
+		$this->session->set_flashdata('message1', '
+			<div class="ui positive message">
+				<i class="close icon"></i>
+				<div class="header">
+					Berhasil
+				</div>
+				<p>Pengguna berhasil dihapus.</p>
+			</div>
+			');
+		redirect (base_url('admin/user_admin'));
+
+	}
 	
 
 }
