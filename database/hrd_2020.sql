@@ -75,22 +75,6 @@ INSERT INTO `div_position` (`id`, `division_id`, `pos_name`, `desc`, `status`, `
 
 -- --------------------------------------------------------
 
---
--- Stand-in structure for view `list_vacancy_view`
--- (See below for the actual view)
---
-CREATE TABLE `list_vacancy_view` (
-`vac_id` int(11)
-,`vac_job_title` varchar(255)
-,`vac_desc` text
-,`vac_status` char(1)
-,`vac_due_date` datetime
-,`vac_create_by` varchar(200)
-,`usr_role` varchar(255)
-,`vac_create_at` datetime
-,`count_rec_pos` bigint(21)
-);
-
 -- --------------------------------------------------------
 
 --
@@ -118,28 +102,6 @@ INSERT INTO `rec_recruitment` (`id`, `vacancy_id`, `pos_id`, `desc`, `status`, `
 (1, 1, 1, 'Supervisor wanted job ', '1', 2, 0, '2020-12-09 23:14:07', 2, '1');
 
 -- --------------------------------------------------------
-
---
--- Stand-in structure for view `rec_vacancy_view`
--- (See below for the actual view)
---
-CREATE TABLE `rec_vacancy_view` (
-`vac_id` int(11)
-,`rec_id` int(11)
-,`vac_job_title` varchar(255)
-,`vac_desc` text
-,`vac_status` char(1)
-,`vac_due_date` datetime
-,`vac_create_by` varchar(200)
-,`usr_role` varchar(255)
-,`vac_create_at` datetime
-,`rec_desc` text
-,`rec_status` char(1)
-,`rec_capacity` int(10)
-,`rec_loaded` int(10)
-,`rec_pos_name` varchar(255)
-,`rec_div_name` varchar(255)
-);
 
 -- --------------------------------------------------------
 
@@ -252,23 +214,6 @@ INSERT INTO `vac_vacancy` (`id`, `job_title`, `desc`, `status`, `due_date`, `cre
 (1, 'Job Batalion 1A', 'Job Batalion 1A, Posisi mana aja', '0', '2020-12-31 23:06:18', '2020-12-09 23:06:25', 2, '0');
 
 -- --------------------------------------------------------
-
---
--- Structure for view `list_vacancy_view`
---
-DROP TABLE IF EXISTS `list_vacancy_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_vacancy_view`  AS  (select `vac`.`id` AS `vac_id`,`vac`.`job_title` AS `vac_job_title`,`vac`.`desc` AS `vac_desc`,`vac`.`status` AS `vac_status`,`vac`.`due_date` AS `vac_due_date`,`usr`.`name` AS `vac_create_by`,`rol`.`role_name` AS `usr_role`,`vac`.`create_at` AS `vac_create_at`,coalesce((select count(`rec`.`id`) from `rec_recruitment` `rec` where `rec`.`vacancy_id` = `vac`.`id` and `rec`.`deleted` = '0' group by `vac`.`id`),0) AS `count_rec_pos` from ((`vac_vacancy` `vac` join `usr_users` `usr` on(`vac`.`create_by` = `usr`.`id`)) join `usr_roles` `rol` on(`usr`.`role_id` = `rol`.`id`)) where `vac`.`deleted` = '0') ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `rec_vacancy_view`
---
-DROP TABLE IF EXISTS `rec_vacancy_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rec_vacancy_view`  AS  (select `vac`.`id` AS `vac_id`,`rec`.`id` AS `rec_id`,`vac`.`job_title` AS `vac_job_title`,`vac`.`desc` AS `vac_desc`,`vac`.`status` AS `vac_status`,`vac`.`due_date` AS `vac_due_date`,`usr`.`name` AS `vac_create_by`,`rol`.`role_name` AS `usr_role`,`vac`.`create_at` AS `vac_create_at`,`rec`.`desc` AS `rec_desc`,`rec`.`status` AS `rec_status`,`rec`.`capacity` AS `rec_capacity`,`rec`.`loaded` AS `rec_loaded`,`pos`.`pos_name` AS `rec_pos_name`,`divs`.`div_name` AS `rec_div_name` from (((((`rec_recruitment` `rec` join `vac_vacancy` `vac` on(`rec`.`vacancy_id` = `vac`.`id`)) join `usr_users` `usr` on(`vac`.`create_by` = `usr`.`id`)) join `usr_roles` `rol` on(`usr`.`role_id` = `rol`.`id`)) join `div_position` `pos` on(`rec`.`pos_id` = `pos`.`id`)) join `div_division` `divs` on(`pos`.`division_id` = `divs`.`id`)) where `vac`.`deleted` <> '0') ;
-
 --
 -- Indexes for dumped tables
 --
