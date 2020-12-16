@@ -16,7 +16,7 @@
 				</table>
 			</div>
 			<a class="item" href="<?= base_url('admin/dashboard/') ?>"><i class="home icon"></i> Dashboard</a>
-			<a class="item" href="<?= base_url('admin/dashboard/') ?>table/"><i class="table icon"></i> Table</a>
+			<a class="item" href="<?= base_url('admin/vacancy/') ?>"><i class="paper plane outline icon"></i> Data Iklan Rekrutmen</a>
 			<!-- Begin Simple Accordion -->
 			<div class="ui accordion simpleaccordion item">
 			    <div class="title titleaccordion item"><i class="dropdown icon"></i> Social Media</div>
@@ -29,7 +29,6 @@
 			<a class="item" href="<?= base_url('admin/user_admin/') ?>"><i class="user icon"></i> Pengguna</a>	
 			<a class="item" href="<?= base_url('admin/user_roles/') ?>"><i class="users icon"></i> Role / Hak Akses</a>	
 			<a class="item"><i class="sign out alternate icon"></i> Logout</a>
-			<a class="item" href="https://fomantic-ui.com/"><i class="heart icon"></i>More Components</a>
 			<div class="item" id="hidemobiletabletsidebar">
 				<button class="fluid ui button">
 					Close
@@ -48,7 +47,7 @@
 				<img src="<?= base_url('assets/') ?>images/user.png" id="sidebar-image">
 			</div>
 			<a class="item" href="<?= base_url('admin/dashboard/') ?>"><i class="home icon"></i> Dashboard</a>
-			<a class="item" href="<?= base_url('admin/dashboard/') ?>table/"><i class="table icon"></i> Table</a>
+			<a class="item" href="<?= base_url('admin/vacancy/') ?>"><i class="paper plane outline icon blue"></i> Data Iklan Rekrutmen</a>
 			<!-- Begin Simple Accordion -->
 			<div class="ui accordion simpleaccordion item">
 			    <div class="title titleaccordion item"><i class="dropdown icon"></i> Social Media</div>
@@ -56,22 +55,10 @@
 			        <a class="item itemaccordion" href="#"><i class="facebook icon"></i> Facebook</a>
 			    </div>
 			</div>
-			<!-- End Simple Accordion -->
-			<!-- <div class="ui item">
-				<div class="ui fluid selection dropdown moredropdown">
-					<div class="text">Menu</div>
-					<i class="dropdown icon"></i>
-					<div class="menu">
-						<p class="item">Choice 1</p>
-						<p class="item">Choice 2</p>
-					</div>
-				</div>
-			</div>	 -->
 			<a class="item" href="<?= base_url('admin/divisions/') ?>"><i class="database icon"></i> Master Divisi & Posisi</a>		
 			<a class="item" href="<?= base_url('admin/user_admin/') ?>"><i class="user icon"></i> Pengguna</a>	
 			<a class="item" href="<?= base_url('admin/user_roles/') ?>"><i class="users icon"></i> Role / Hak Akses</a>
 			<a class="item"><i class="sign out alternate icon"></i> Logout</a>
-			<a class="item" href="https://fomantic-ui.com/"><i class="heart icon"></i>More Components</a>
 			<a class="item"></a>
 		</div>
 	</div>
