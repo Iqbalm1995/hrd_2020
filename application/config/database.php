@@ -73,6 +73,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+// new db
+
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'remotemysql.com',
