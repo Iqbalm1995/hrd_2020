@@ -63,8 +63,13 @@
 								            <td><?= $r->nama_akses; ?></td>
 								            <td class="center aligned"><?= $status_pengguna; ?></td>
 								            <td class="center aligned">
-								            	<a class="mini ui teal button" href="<?= base_url("admin/pengguna/ubah_pengguna/".$r->pengguna_id) ?>"><i class="pencil icon"></i>Ubah</a>
-												<a class="mini ui red button" href="<?=  base_url("admin/pengguna/hapus_pengguna/".$r->pengguna_id) ?>"><i class="trash icon"></i>Hapus</a>
+								            	<?php 
+								            		if ($r->pengguna_id == '1') {
+								            			echo '-';
+								            		}else{ ?>
+									            	<a class="mini ui teal button" href="<?= base_url("admin/pengguna/ubah_pengguna/".$r->pengguna_id) ?>"><i class="pencil icon"></i>Ubah</a>
+													<a class="mini ui red button" href="<?=  base_url("admin/pengguna/hapus_pengguna/".$r->pengguna_id) ?>"><i class="trash icon"></i>Hapus</a>
+								            	<?php } ?>
 								            </td>
 								        </tr>
 							    	<?php } /*end foreach*/ } /*end if*/ ?>

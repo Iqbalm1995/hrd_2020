@@ -59,8 +59,13 @@
 								            <td><?= $r->deskripsi_akses; ?></td>
 								            <td class="center aligned"><?= $status_akses; ?></td>
 								            <td class="center aligned">
-								            	<a class="mini ui teal button" href="<?= base_url("admin/hak_akses/ubah_hak_akses/".$r->akses_id) ?>"><i class="pencil icon"></i>Ubah</a>
-												<a class="mini ui red button" href="<?=  base_url("admin/hak_akses/hapus_hak_akses/".$r->akses_id) ?>"><i class="trash icon"></i>Hapus</a>
+								            	<?php 
+								            		if ($r->akses_id == '1') {
+								            			echo '-';
+								            		}else{ ?>
+									            	<a class="mini ui teal button" href="<?= base_url("admin/hak_akses/ubah_hak_akses/".$r->akses_id) ?>"><i class="pencil icon"></i>Ubah</a>
+													<a class="mini ui red button" href="<?=  base_url("admin/hak_akses/hapus_hak_akses/".$r->akses_id) ?>"><i class="trash icon"></i>Hapus</a>
+								            	<?php } ?>
 								            </td>
 								        </tr>
 							    	<?php } /*end foreach*/ } /*end if*/ ?>
