@@ -205,9 +205,6 @@ class Hak_akses extends CI_Controller {
             redirect (base_url('admin/hak_akses'));
         }
 
-        // judul halaman
-        $head['title']          = 'UBAH HAK AKSES';
-
         // ambil data dari fungsi detail_hak_akses
         $get_data = $this->detail_hak_akses($akses_id);
 

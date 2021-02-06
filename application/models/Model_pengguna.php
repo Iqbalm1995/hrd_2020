@@ -51,7 +51,7 @@ class Model_pengguna extends CI_Model {
 	{
 		$data = array(
 			'status_pengguna' 	=> '0',
-			'hapus' 		=> '1',
+			'hapus' 			=> '1',
 		);
 		$where = array(
 			'pengguna_id' 		=> $pengguna_id,

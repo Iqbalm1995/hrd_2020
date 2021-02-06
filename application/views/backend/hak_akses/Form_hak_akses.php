@@ -1,4 +1,3 @@
-BEGIN CONTEN -->
 <div class="right floated thirteen wide computer sixteen wide phone column" id="content">
 	<div class="ui container grid">
 		<div class="row">
