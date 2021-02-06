@@ -84,14 +84,26 @@
 								<img src="<?= base_url('/assets/'); ?>images/user.png" id="sidebar-image">
 							</div>
 							<a class="item" href="<?= base_url('admin/dashboard'); ?>"><i class="dashboard icon"></i> DASHBOARD</a>
-							<!-- Begin Simple Accordion -->
+							
+							<!-- NEW MENU -->
 							<div class="ui accordion simpleaccordion item">
 							    <div class="title titleaccordion item"><i class="dropdown icon"></i> MASTER DATA</div>
 							    <div class="content contentaccordion">
-							        <a class="item itemaccordion" href="<?= base_url('#'); ?>"><i class="th list icon"></i> Data A</a>
-							        <a class="item itemaccordion" href="<?= base_url('#'); ?>"><i class="th list icon"></i> Data B</a>
+							        <a class="item itemaccordion" href="<?= base_url('admin/posisi'); ?>"><i class="th list icon"></i> POSISI</a>
+							        <a class="item itemaccordion" href="<?= base_url('admin/divisi'); ?>"><i class="th list icon"></i> DIVISI</a>
 							    </div>
 							</div>
+							<div class="ui accordion simpleaccordion item">
+							    <div class="title titleaccordion item"><i class="dropdown icon"></i> PENGATURAN</div>
+							    <div class="content contentaccordion">
+							        <a class="item itemaccordion" href="<?= base_url('admin/pengguna'); ?>"><i class="th list icon"></i> PENGGUNA</a>
+							        <a class="item itemaccordion" href="<?= base_url('admin/hak_akses'); ?>"><i class="th list icon"></i> HAK AKSES</a>
+							    </div>
+							</div>
+							<!-- END NEW MENU -->
+
+
+							<!-- Begin Simple Accordion -->
 							<!-- End Simple Accordion -->
 							<a class="item" href="<?= base_url('admin/table'); ?>"><i class="table icon"></i> TABLE EXAMPLE</a>
 							<a class="item"></a>

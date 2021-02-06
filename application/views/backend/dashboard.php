@@ -107,9 +107,15 @@
 							<button id="rand-multi-axis" class="ui blue button simplelable">Randomize Data</button>
 						</div>
 					</div>
+
 					<div class="eight wide computer sixteen wide phone column justifed">
 						<h4>EXAMPLE TITLE</h4>
 						<div class="ui divider"></div>
+						<!-- <?php 
+							$password = 'admin123';
+							$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+							print_r($hashed_password); 
+						?> -->
 						<div class="ui tall stacked segment">
 							<a class="ui blue ribbon label">Chart.js Pie Chart - Examples</a>
 							<canvas id="example-pie"></canvas>
