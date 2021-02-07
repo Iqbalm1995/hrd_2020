@@ -91,6 +91,7 @@
 							    <div class="content contentaccordion">
 							        <a class="item itemaccordion" href="<?= base_url('admin/posisi'); ?>"><i class="th list icon"></i> POSISI</a>
 							        <a class="item itemaccordion" href="<?= base_url('admin/divisi'); ?>"><i class="th list icon"></i> DIVISI</a>
+							        <a class="item itemaccordion" href="<?= base_url('admin/tes_ujian'); ?>"><i class="th list icon"></i> TES UJIAN</a>
 							    </div>
 							</div>
 							<div class="ui accordion simpleaccordion item">
