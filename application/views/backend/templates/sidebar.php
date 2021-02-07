@@ -20,8 +20,8 @@
 								<span class="clear navtext"><strong>ACCOUNT</strong></span>
 								<i class="dropdown icon navtext"></i>
 								<div class="menu">
-									<a href="<?= base_url('pengaturan'); ?>" class="item"><p><i class="settings icon"></i>Ganti Password</p></a>
-									<a class="item"><p><i class="sign out alternate icon"></i>Logout</p></a>
+									<!-- <a href="<?= base_url('pengaturan'); ?>" class="item"><p><i class="settings icon"></i>Ganti Password</p></a> -->
+									<a class="item" href="<?php echo base_url('admin/login/logout'); ?>"><p><i class="sign out alternate icon"></i>Logout</p></a>
 								</div>
 							</div>
 						</div>

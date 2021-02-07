@@ -12,9 +12,9 @@ class Pengguna extends CI_Controller {
         $this->load->model('Model_hak_akses');
         $this->load->model('Model_pengguna');
         //sesion login
-        // if(($this->session->userdata('status_login') != "loginactive") && ($this->session->userdata('role') != 'admin')){
-		// 	redirect(base_url().'login');
-		// }
+        if(($this->session->userdata('status_login') != "loginactive") && ($this->session->userdata('role') != 'admin')){
+			redirect(base_url().'admin/login');
+		}
         
     }
 

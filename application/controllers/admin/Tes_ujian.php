@@ -11,9 +11,9 @@ class Tes_ujian extends CI_Controller {
         // Load Model
         $this->load->model('Model_tes_ujian');
         //sesion login
-        // if(($this->session->userdata('status_login') != "loginactive") && ($this->session->userdata('role') != 'admin')){
-		// 	redirect(base_url().'login');
-		// }
+        if(($this->session->userdata('status_login') != "loginactive") && ($this->session->userdata('role') != 'admin')){
+			redirect(base_url().'admin/login');
+		}
         
     }
 
