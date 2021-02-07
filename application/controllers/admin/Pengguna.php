@@ -104,7 +104,7 @@ class Pengguna extends CI_Controller {
         }
 
         // judul halaman
-        $head['title']          = 'UBAH HAK AKSES';
+        $head['title']          = 'UBAH PENGGUNA';
 
         // ambil data dari fungsi detail_pengguna
         $get_data = $this->detail_pengguna($pengguna_id);
