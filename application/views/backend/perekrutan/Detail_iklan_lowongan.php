@@ -60,6 +60,9 @@
 							    	    	  <div class="or" data-text="/"></div>
 							    	    	  <a class="ui blue button" href="<?= base_url('admin/iklan_lowongan/ubah_status_iklan/'.$detail->iklan_id.'/4') ?>">Publikasi</a>
 							    	    	</div>
+											<a href="<?= base_url('admin/iklan_lowongan/hapus_iklan_lowongan/'.$detail->iklan_id) ?>" class="ui red right floated button">
+												<i class="trash icon"></i>
+											</a>
 											<a href="<?= base_url('admin/iklan_lowongan/ubah_iklan_lowongan/'.$detail->iklan_id) ?>" class="ui teal right floated button">
 												<i class="pencil icon"></i>UBAH IKLAN
 											</a>

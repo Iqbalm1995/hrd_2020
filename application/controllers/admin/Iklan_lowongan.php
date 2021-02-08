@@ -278,7 +278,7 @@ class Iklan_lowongan extends CI_Controller {
 
     }
 
-    public function hapus_posisi($iklan_id = null)
+    public function hapus_iklan_lowongan($iklan_id = null)
     {
         if($iklan_id == null){
             $this->session->set_flashdata('message1', '
@@ -294,11 +294,11 @@ class Iklan_lowongan extends CI_Controller {
         }
 
         // ambil data dari fungsi detail_posisi
-        $get_data = $this->detail_posisi($iklan_id);
+        $get_data = $this->Model_iklan_lowongan->detail_iklan_lowongan($iklan_id);
 
         if ($get_data) {
 
-            $hapus = $this->Model_iklan_lowongan->hapus_tb_iklan_lowongan($iklan_id);
+            $hapus = $this->Model_iklan_lowongan->hapus_iklan_lowongan($iklan_id);
 
             if ($hapus) {
                 $this->session->set_flashdata('message1', '
@@ -307,7 +307,7 @@ class Iklan_lowongan extends CI_Controller {
                         <div class="header">
                             Berhasil
                         </div>
-                        <p>Iklan Divisi berhasil hapus.</p>
+                        <p>Iklan berhasil hapus.</p>
                     </div>
                     ');
                 redirect (base_url('admin/iklan_lowongan'));
@@ -318,7 +318,7 @@ class Iklan_lowongan extends CI_Controller {
                         <div class="header">
                             Gagal
                         </div>
-                        <p>Iklan Divisi gagal hapus.</p>
+                        <p>Iklan gagal hapus.</p>
                     </div>
                     ');
                 redirect (base_url('admin/iklan_lowongan'));

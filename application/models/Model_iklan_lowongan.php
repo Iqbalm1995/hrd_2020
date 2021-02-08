@@ -108,14 +108,14 @@ class Model_iklan_lowongan extends CI_Model {
 		return $this->db->affected_rows();
 	}
 
-	public function hapus_tb_iklan_lowongan($pos_id)
+	public function hapus_iklan_lowongan($iklan_id)
 	{
 		$data = array(
-			'status_iklan' 	=> '0',
+			'status_iklan' 	=> '2',
 			'hapus' 		=> '1',
 		);
 		$where = array(
-			'pos_id' 		=> $pos_id,
+			'iklan_id' 		=> $iklan_id,
 			'hapus' 		=> '0'
 		);
 		$this->db->update($this->tb_iklan_lowongan, $data, $where);
