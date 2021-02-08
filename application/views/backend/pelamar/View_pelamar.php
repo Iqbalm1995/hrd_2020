@@ -81,14 +81,14 @@
 							    		foreach ($data_pelamar as $r) { 
 						    			switch ($r->status_pelamar) {
 						    				case '1':
-							    				$status_pelamar = '<a class="ui green label">Lolos</a>';
+							    				$status_pelamar = '<a class="ui green label">LULUS</a>';
 						    					break;
 						    				case '2':
-							    				$status_pelamar = '<a class="ui red label">Tidak Lolos</a>';
+							    				$status_pelamar = '<a class="ui red label">TIDAK LULUS</a>';
 						    					break;
 						    				
 						    				default:
-							    				$status_pelamar = '<a class="ui blue label">Mendaftar</a>';
+							    				$status_pelamar = '<a class="ui blue label">MENDAFTAR</a>';
 						    					break;
 						    			}
 							    		?>

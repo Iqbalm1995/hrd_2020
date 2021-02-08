@@ -86,10 +86,26 @@ class Pelamar extends CI_Controller {
         $head['title']  = 'DETAIL DATA PELAMAR';
         $data['urlback'] = base_url('admin/pelamar/');
         $data['detail'] = $this->Model_pelamar->detail_pelamar($pelamar_id);
+        $data['lulus'] = base_url('admin/pelamar/lulus/');
+        $data['tolak'] = base_url('admin/pelamar/tolak/');
         $this->load->view('backend/templates/header', $head);
         $this->load->view('backend/templates/sidebar');
         $this->load->view('backend/pelamar/detail_pelamar', $data);
         $this->load->view('backend/templates/footer');
+    }
+
+    public function lulus($pelamar_id)
+    {
+        $data = array('status_pelamar' => '1');
+        $where = array('pelamar_id' => $pelamar_id);
+        $this->Model_pelamar->ubah_status_pelamar($where, $data);
+    }
+
+    public function tolak($pelamar_id)
+    {
+        $data = array('status_pelamar' => '2');
+        $where = array('pelamar_id' => $pelamar_id);
+        $this->Model_pelamar->ubah_status_pelamar($where, $data);
     }
 
 }

@@ -33,14 +33,14 @@
 									<?php
 					    			switch ($detail->status_pelamar) {
 					    				case '1':
-						    				$status_pelamar = '<a class="ui green label">Lolos</a>';
+						    				$status_pelamar = '<a class="ui green label">LULUS</a>';
 					    					break;
 					    				case '2':
-						    				$status_pelamar = '<a class="ui red label">Tidak Lolos</a>';
+						    				$status_pelamar = '<a class="ui red label">TIDAK LULUS</a>';
 					    					break;
 					    				
 					    				default:
-						    				$status_pelamar = '<a class="ui blue label">Mendaftar</a>';
+						    				$status_pelamar = '<a class="ui blue label">MENDAFTAR</a>';
 					    					break;
 					    			}
 									?>
@@ -50,7 +50,13 @@
 											<td><?= $detail->nama_divisi ?></td>
 											<td><?= $detail->judul_iklan ?></td>
 											<td style="text-align: center;"><?= $status_pelamar ?></td>
-											<td style="text-align: center;"></td>
+											<td style="text-align: center;">
+								    	    	<div class="ui buttons">
+								    	    	  <a onclick="lulus(<?= $detail->pelamar_id ?>)" class="ui green button">LULUS</a>
+								    	    	  <div class="or" data-text="/"></div>
+								    	    	  <a onclick="tolak(<?= $detail->pelamar_id ?>)" class="ui red button">TOLAK</a>
+								    	    	</div>
+								    	    </td>
 										</tr>
 									</tbody>
 								</table>
@@ -64,56 +70,63 @@
 							            <th>NAMA</th>
 							            <th>GENDER</th>
 							            <th>TTL</th>
-							            <th>STATUS MENIKAH</th>
+							            <th>STATUS</th>
 							            <th>AGAMA</th>
 							            <th>ALAMAT</th>
 							            <th>KONTAK</th>
 							            <th style="text-align: center;">FILE</th>
 							        </tr>
 							    </thead>
+							    <?php 
+			        			switch ($detail->status_menikah) {
+			        				case '1':
+			    	    				$status_menikah = 'Kawin';
+			        					break;			        				
+			        				default:
+			    	    				$status_menikah = 'Belum Kawin';
+			        					break;
+			        			}
+			        			switch ($detail->agama) {
+			        				case '1':
+			    	    				$agama = 'Islam';
+			        					break;
+			        				case '2':
+			    	    				$agama = 'Katolik';
+			        					break;
+			        				case '3':
+			    	    				$agama = 'Protestan';
+			        					break;
+			        				case '4':
+			    	    				$agama = 'Hindu';
+			        					break;			        				
+			        				default:
+			    	    				$agama = 'Budha';
+			        					break;
+			        			}
+							    ?>
 							    <tbody>
-							    	<!-- <?php $no=1; foreach ($result as $r) { ?>
-							    		<tr>
-								    	    <td><?= $no++; ?></td>
-								    	    <td><?= $r->tglpengadaan; ?></td>
-								    	    <td><?= $r->jumlahpermintaan; ?></td>
-								    	    <td><?= 'Rp. '.$r->totalharga; ?></td>
-								    	    <?php if ($r->status == 0): ?>
-								    	    	<td>
-								    	    		<div class="ui black label">
-								    	    			<i class="clock icon"></i>
-								    	    			MENUNGGU PERSETUJUAN
-								    	    		</div>
-								    	    	</td>
-								    	    <?php endif ?>
-								    	    <?php if ($r->status == 1): ?>
-								    	    	<td>
-								    	    		<div class="ui green label">
-									    	    		<i class="checkmark icon"></i>
-									    	    		DISETUJUI
-									    	    	</div>
-								    	    	</td>
-								    	    <?php endif ?>
-								    	    <?php if ($r->status == 2): ?>
-								    	    	<td>
-								    	    		<div class="ui red label">
-									    	    		<i class="times icon"></i>
-									    	    		DITOLAK
-									    	    	</div>
-								    	    	</td>
-								    	    <?php endif ?>
-								    	    <td><?= $r->keterangan ?></td>
-								    	    <?php foreach ($show as $sh) { ?>
-								    	    <td style="text-align: center;">
-								    	    	<div class="ui buttons">
-								    	    	  <a onclick="setuju(<?= $r->id.','.$sh->id ?>)" class="ui green button"><i class="checkmark icon"></i></a>
-								    	    	  <div class="or" data-text="/"></div>
-								    	    	  <a onclick="tolak(<?= $r->id.','.$sh->id ?>)" class="ui red button"><i class="times icon"></i></a>
-								    	    	</div>
-								    	    </td>
-								    	    <?php } ?>
-								    	</tr>
-							    	<?php } ?> -->
+							    	<tr>
+							    		<td><?= $detail->nama_pelamar ?></td>
+							    		<td><?= $detail->jenis_kelamin ?></td>
+							    		<td><?= $detail->tempat_lahir ?> / <?= $detail->tanggal_lahir ?></td>
+							    		<td><?= $status_menikah ?></td>
+							    		<td><?= $agama ?></td>
+							    		<td><?= $detail->alamat ?></td>
+							    		<td><?= $detail->no_hp ?> / <?= $detail->email?></td>
+							    		<td>
+							    			<div class="ui buttons">
+												<a href="#" class="ui blue button">KTP</a>
+												<div class="or" data-text="/"></div>
+												<a href="#" class="ui teal button">FOTO</a>
+												<div class="or" data-text="/"></div>
+												<a href="#" class="ui violet button">CV</a>
+												<div class="or" data-text="/"></div>
+												<a href="#" class="ui purple button">PORTFOLIO</a>
+												<div class="or" data-text="/"></div>
+												<a href="#" class="ui green button">SERTIFIKAT</a>
+								    	   	</div>
+								    	</td>
+							    	</tr>
 							    </tbody>
 							</table>
 						</div>
@@ -125,33 +138,70 @@
 	</div>
 </div>
 <script>
-function setuju(id,redirectId) {
+function lulus(pelamar_id) {
 	console.log('OK BOS');
-	console.log(id);
+	console.log(pelamar_id);
 	$('body').toast({
-	    message: '<strong>YAKIN SETUJUI ?</strong>',
+	    message: '<strong>YAKIN LULUSKAN ?</strong>',
 	    displayTime: 3000,
 	    position: 'top center',
 	    classActions: 'center',
 	    classContent: 'center',
 	    actions: [{
-	        text: 'SETUJUI',
+	        text: 'LULUSKAN',
 	        icon: 'checkmark',
 	        class: 'green',
 	        click: function() {
 	        	$.ajax({
-	        	    url : "<?= $setuju; ?>"+id,
+	        	    url : "<?= $lulus; ?>"+pelamar_id,
 	        	    type: "GET",
 	        	    dataType: "JSON"
 	        	});
 	            $('body').toast({
-	                message: 'PENGADAAN BERHASIL DISETUJUI !',
+	                message: 'KANDIDAT BERHASIL DILULUSKAN !',
 	                showProgress: 'bottom',
 	                class: 'olive'
 	            });
 	            async function redirect(){
 	            	await new Promise(resolve => setTimeout(resolve, 3000));
-	            	document.location = "<?= base_url('pengadaan/show/')?>"+redirectId;
+	            	document.location = "<?= base_url('/admin/pelamar/detail_pelamar/')?>"+pelamar_id;
+	            }
+	            redirect();
+	        }
+	    }, {
+	        text: 'BATAL',
+	        icon: 'close'
+	    }]
+	});
+}
+
+function tolak(pelamar_id) {
+	console.log('OK BOS');
+	console.log(pelamar_id);
+	$('body').toast({
+	    message: '<strong>YAKIN TOLAK ?</strong>',
+	    displayTime: 3000,
+	    position: 'top center',
+	    classActions: 'center',
+	    classContent: 'center',
+	    actions: [{
+	        text: 'TOLAK',
+	        icon: 'close',
+	        class: 'red',
+	        click: function() {
+	        	$.ajax({
+	        	    url : "<?= $tolak; ?>"+pelamar_id,
+	        	    type: "GET",
+	        	    dataType: "JSON"
+	        	});
+	            $('body').toast({
+	                message: 'KANDIDAT BERHASIL DITOLAK !',
+	                showProgress: 'bottom',
+	                class: 'olive'
+	            });
+	            async function redirect(){
+	            	await new Promise(resolve => setTimeout(resolve, 3000));
+	            	document.location = "<?= base_url('/admin/pelamar/detail_pelamar/')?>"+pelamar_id;
 	            }
 	            redirect();
 	        }

@@ -74,6 +74,12 @@ class Model_pelamar extends CI_Model {
 		return $query->row();
 	}
 
+	public function ubah_status_pelamar($where, $data)
+	{
+		$this->db->update($this->tb_perekrutan_pelamar, $data, $where);
+		return $this->db->affected_rows();
+	}
+
 }
 
 /* End of file Model_pelamar.php */

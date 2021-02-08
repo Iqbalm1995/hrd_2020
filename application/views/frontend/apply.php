@@ -18,8 +18,8 @@
 										<div class="field">
 	                                        <label>JENIS KELAMIN</label>
 	                                        <select class="ui dropdown" id="jk" name="jenis_kelamin" required>
-	                                            <option value="1">Laki - Laki</option>
-	                                            <option value="2">Perempuan</option>
+	                                            <option value="L">Laki - Laki</option>
+	                                            <option value="P">Perempuan</option>
 	                                        </select>
 	                                        <script>
 	                                            $('#jk').dropdown();
@@ -45,7 +45,7 @@
 	                                        <label>STATUS KAWIN</label>
 	                                        <select class="ui dropdown" id="kawin" name="status_menikah" required>
 	                                            <option value="1">Kawin</option>
-	                                            <option value="2">Belum Kawin</option>
+	                                            <option value="0">Belum Kawin</option>
 	                                        </select>
 	                                        <script>
 	                                            $('#kawin').dropdown();
