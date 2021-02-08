@@ -57,6 +57,23 @@ class Model_pelamar extends CI_Model {
 		return $this->db->insert_id();
 	}
 
+	public function detail_pelamar($pelamar_id)
+	{
+		$this->db->select('plm.*');
+		$this->db->select('pp.status_pelamar');
+		$this->db->select('pos.nama_posisi, div.nama_divisi');
+		$this->db->select('ik.judul_iklan');
+		$this->db->from($this->tb_pelamar.' plm');
+		$this->db->join($this->tb_perekrutan_pelamar.' pp', 'pp.pelamar_id = plm.pelamar_id', 'left');
+		$this->db->join($this->tb_perekrutan.' prt', 'prt.rekrut_id = pp.rekrut_id', 'left');
+		$this->db->join($this->tb_iklan_lowongan.' ik', 'ik.iklan_id = prt.iklan_id', 'left');
+		$this->db->join($this->tb_posisi.' pos', 'pos.pos_id = prt.pos_id', 'left');
+		$this->db->join($this->tb_divisi.' div', 'div.divisi_id = pos.divisi_id', 'left');
+		$this->db->where('plm.hapus', '0');
+		$query = $this->db->get();
+		return $query->row();
+	}
+
 }
 
 /* End of file Model_pelamar.php */

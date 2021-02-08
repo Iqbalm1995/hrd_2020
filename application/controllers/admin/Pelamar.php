@@ -21,7 +21,7 @@ class Pelamar extends CI_Controller {
 
 	public function index()
 	{
-		$head['title']          = 'DATA HAK AKSES';
+		$head['title']          = 'DATA PELAMAR';
 
         // ambil data dari fungsi data_pelamar
 		$filter = array(
@@ -67,7 +67,7 @@ class Pelamar extends CI_Controller {
             'nama_pelamar'              => (!empty($nama_pelamar_filter) ? $nama_pelamar_filter : null)
         );
 
-		$head['title']          = 'DATA HAK AKSES';
+		$head['title']                  = 'DATA PELAMAR';
 
         $data['data_pelamar'] 			= $this->data_pelamar($filter);
         $data['data_posisi'] 			= $this->data_posisi();
@@ -80,6 +80,17 @@ class Pelamar extends CI_Controller {
 		$this->load->view('backend/pelamar/view_pelamar', $data);
 		$this->load->view('backend/templates/footer');
 	}
+
+    public function detail_pelamar($pelamar_id)
+    {
+        $head['title']  = 'DETAIL DATA PELAMAR';
+        $data['urlback'] = base_url('admin/pelamar/');
+        $data['detail'] = $this->Model_pelamar->detail_pelamar($pelamar_id);
+        $this->load->view('backend/templates/header', $head);
+        $this->load->view('backend/templates/sidebar');
+        $this->load->view('backend/pelamar/detail_pelamar', $data);
+        $this->load->view('backend/templates/footer');
+    }
 
 }
 
