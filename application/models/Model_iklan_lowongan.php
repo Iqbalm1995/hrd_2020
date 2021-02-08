@@ -7,6 +7,8 @@ class Model_iklan_lowongan extends CI_Model {
 	var $tb_perekrutan 			= 'perekrutan';
 	var $tb_posisi 				= 'posisi';
 	var $tb_divisi 				= 'divisi';
+	var $tb_tes_ujian 			= 'tes_ujian';
+	var $tb_tes_perekrutan 		= 'tes_perekrutan';
 	
 	public function __construct()
 	{
@@ -63,6 +65,7 @@ class Model_iklan_lowongan extends CI_Model {
 		$this->db->select('pos.nama_posisi');
 		$this->db->select('div.nama_divisi');
 		$this->db->select('r.deskripsi_rekrut, r.status_rekrut, r.kapasitas, r.terisi, r.rekrut_id');
+		$this->db->select('(SELECT COUNT(tes_id) FROM tes_perekrutan WHERE rekrut_id = r.rekrut_id) AS jml_tes');
 		$this->db->from($this->tb_iklan_lowongan.' ik');
 		$this->db->join($this->tb_perekrutan.' r', 'r.iklan_id = ik.iklan_id', 'left');
 		$this->db->join($this->tb_posisi.' pos', 'r.pos_id = pos.pos_id', 'left');
@@ -94,6 +97,21 @@ class Model_iklan_lowongan extends CI_Model {
 		$this->db->join($this->tb_divisi.' div', 'pos.divisi_id = div.divisi_id', 'left');
 		$this->db->where('pos.hapus', '0');
 		return $this->db->get()->result();
+	}
+
+	public function list_tes_perekrutan()
+	{
+		$this->db->select('tu.*');
+		$this->db->from($this->tb_tes_ujian.' tu');
+		$this->db->join($this->tb_perekrutan.' r', 'r.iklan_id = ik.iklan_id', 'left');
+		$this->db->join($this->tb_posisi.' p', 'r.pos_id = p.pos_id', 'left');
+		$this->db->join($this->tb_divisi.' d', 'p.divisi_id = d.divisi_id', 'left');
+		$this->db->where('ik.hapus', '0');
+		$this->db->group_by('ik.iklan_id');
+		$this->db->order_by('ik.tanggal_iklan DESC');
+		$query = $this->db->get();
+
+		return $query->result();
 	}
 
 	public function simpan_iklan_lowongan($data)

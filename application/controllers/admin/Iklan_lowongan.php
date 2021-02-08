@@ -64,6 +64,21 @@ class Iklan_lowongan extends CI_Controller {
         return $ret;
     }
 
+    public function tes_ujian_rekrut($iklan_id = null, $rekrut_id = null)
+    {
+        $data['data_iklan_lowongan']  = $this->Model_iklan_lowongan->ambil_lowongan_periklan($iklan_id);
+        $data['data_rekrut_lowongan'] = $this->Model_iklan_lowongan->ambil_rekrut_byid($rekrut_id);
+
+        $head['title'] = 'DATA TES UJIAN LOWONGAN';
+
+
+        // view halaman
+        $this->load->view('backend/templates/header', $head);
+        $this->load->view('backend/templates/sidebar');
+        $this->load->view('backend/perekrutan/detail_iklan_lowongan', $data);
+        $this->load->view('backend/templates/footer');
+    }
+
     public function tambah_iklan_lowongan()
     {
         // judul halaman

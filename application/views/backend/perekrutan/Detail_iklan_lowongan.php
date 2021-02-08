@@ -90,7 +90,8 @@
 							            <th>NAMA DIVISI</th>
 							            <th>KAPASITAS</th>
 							            <th>TERISI</th>
-							            <th style="text-align: center;">STATUS PEREKRUTAN</th>
+							            <th style="text-align: center;">STATUS</th>
+							            <th style="text-align: center;">TES UJI</th>
 							            <th style="text-align: center;">AKSI</th>
 							        </tr>
 							    </thead>
@@ -115,6 +116,16 @@
 							    	    <td style="text-align: center;"><?= $r->kapasitas; ?></td>
 							    	    <td style="text-align: center;"><?= $r->terisi; ?></td>
 							    	    <td style="text-align: center;"><?= $status_rekrut; ?></td>
+							    	    <td style="text-align: center;">
+							    	    	<div class="mini ui labeled button" tabindex="0">
+											    <a class="mini ui violet button" href="<?= base_url("admin/iklan_lowongan/tes_ujian_rekrut/".$detail->iklan_id."/".$r->rekrut_id) ?>">
+											        <i class="bars icon"></i>Ujian
+											    </a>
+											    <a class="mini ui basic left pointing label">
+											        <?= $r->jml_tes; ?> Tes
+											    </a>
+											</div>
+							    	    </td>
 							    	    <td style="text-align: center;">
 							    	    	<div class="ui buttons">
 							    	    	  <a href="<?= $urleditperiklan.$r->rekrut_id ?>" class="ui green button"><i class="pen icon"></i></a>
