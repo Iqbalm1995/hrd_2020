@@ -74,7 +74,7 @@ class Iklan_lowongan extends CI_Controller {
         // view halaman
         $this->load->view('backend/templates/header', $head);
         $this->load->view('backend/templates/sidebar');
-        $this->load->view('backend/perekrutan/form_posisi', $data);
+        $this->load->view('backend/perekrutan/form_iklan_lowongan', $data);
         $this->load->view('backend/templates/footer');
     }
 

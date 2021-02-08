@@ -1,4 +1,4 @@
-<!-- BEGIN CONTEN -->
+BEGIN CONTEN -->
 <div class="right floated thirteen wide computer sixteen wide phone column" id="content">
 	<div class="ui container grid">
 		<div class="row">
@@ -32,7 +32,6 @@
 							            <th>Judul Iklan</th>
 							            <th>Tanggal Iklan</th>
 							            <th>Batas Waktu Iklan</th>
-							            <th>Jumlah Posisi Lowongan</th>
 							            <th>Status</th>
 							            <th>Aksi</th>
 							        </tr>
@@ -43,7 +42,7 @@
 							    		// jika data kosong
 							    		if (empty($iklan_lowongan)) { ?>	                                    
 							    		<tr>
-	                                        <td colspan = "7" class="warning center aligned">
+	                                        <td colspan = "6" class="warning center aligned">
 	                                            <i class="attention icon"></i> Data Belum Ada
 	                                        </td>
 	                                    </tr>
@@ -75,11 +74,18 @@
 								            <td><?= $r->judul_iklan; ?></td>
 								            <td><?= $r->tanggal_iklan; ?></td>
 								            <td><?= $r->batas_waktu; ?></td>
-								            <td><?= $r->jml_lowongan; ?></td>
 								            <td class="center aligned"><?= $status_iklan; ?></td>
 								            <td class="center aligned">
-								            	<a class="mini ui teal button" href="<?= base_url("admin/iklan_lowongan/ubah_iklan_lowongan/".$r->iklan_id) ?>"><i class="pencil icon"></i>Ubah</a>
-												<a class="mini ui red button" href="<?=  base_url("admin/iklan_lowongan/hapus_iklan_lowongan/".$r->iklan_id) ?>"><i class="trash icon"></i>Hapus</a>
+								            	<div class="mini ui labeled button" tabindex="0">
+												    <a class="mini ui olive button" href="<?= base_url("admin/iklan_lowongan/detail_iklan_lowongan/".$r->iklan_id) ?>">
+												        <i class="bars icon"></i>Detail Lowogan
+												    </a>
+												    <a class="mini ui basic left pointing label">
+												        <?= $r->jml_lowongan; ?> Lowogan
+												    </a>
+												</div>
+								            	<!-- <a class="mini ui teal button" href="<?= base_url("admin/iklan_lowongan/ubah_iklan_lowongan/".$r->iklan_id) ?>"><i class="pencil icon"></i>Ubah</a>
+												<a class="mini ui red button" href="<?=  base_url("admin/iklan_lowongan/hapus_iklan_lowongan/".$r->iklan_id) ?>"><i class="trash icon"></i>Hapus</a> -->
 								            </td>
 								        </tr>
 							    	<?php } /*end foreach*/ } /*end if*/ ?>
@@ -95,4 +101,4 @@
 		</div>
 	</div>
 </div>
-		<!-- END CONTENT -->
+		<!-- END CONTENT
