@@ -84,6 +84,8 @@
 								<img src="<?= base_url('/assets/'); ?>images/user.png" id="sidebar-image">
 							</div>
 							<a class="item" href="<?= base_url('admin/dashboard'); ?>"><i class="dashboard icon"></i> DASHBOARD</a>
+							<a class="item" href="<?= base_url('admin/kandidat'); ?>"><i class="table icon"></i> DATA KANDIDAT</a>
+							<a class="item" href="<?= base_url('admin/iklan_lowongan'); ?>"><i class="table icon"></i>IKLAN LOWONGAN</a>
 							
 							<!-- NEW MENU -->
 							<div class="ui accordion simpleaccordion item">
@@ -106,7 +108,7 @@
 
 							<!-- Begin Simple Accordion -->
 							<!-- End Simple Accordion -->
-							<a class="item" href="<?= base_url('admin/table'); ?>"><i class="table icon"></i> TABLE EXAMPLE</a>
+							<!-- <a class="item" href="<?= base_url('admin/table'); ?>"><i class="table icon"></i> TABLE EXAMPLE</a> -->
 							<a class="item"></a>
 						</div>
 					</div>
