@@ -52,8 +52,8 @@ class Model_pelamar extends CI_Model {
 	}
 
 	public function simpan_perekrutan_pelamar($data)
-		$this->db->insert($this->tb_perekrutan_pelamar, $data);
 	{
+		$this->db->insert($this->tb_perekrutan_pelamar, $data);
 		return $this->db->insert_id();
 	}
 
