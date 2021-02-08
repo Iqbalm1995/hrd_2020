@@ -43,7 +43,7 @@
 										</div>
 										<div class="field">
 	                                        <label>STATUS KAWIN</label>
-	                                        <select class="ui dropdown" id="kawin" name="status_manikah" required>
+	                                        <select class="ui dropdown" id="kawin" name="status_menikah" required>
 	                                            <option value="1">Kawin</option>
 	                                            <option value="2">Belum Kawin</option>
 	                                        </select>
