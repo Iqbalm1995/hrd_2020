@@ -22,5 +22,15 @@
     <script src="<?= base_url('/assets/'); ?>js/main.js"></script>
     <!-- endinject -->
 </head>
+<style>
+    .inputfile {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+</style>
 
     

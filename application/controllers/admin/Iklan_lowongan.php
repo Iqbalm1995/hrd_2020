@@ -48,6 +48,8 @@ class Iklan_lowongan extends CI_Controller {
     public function detail_iklan_lowongan($iklan_id)
     {
         $data = $this->Model_iklan_lowongan->detail_iklan_lowongan($iklan_id);
+        echo "<pre>";
+        print_r($data);
         return $data;
     }
 
@@ -140,55 +142,59 @@ class Iklan_lowongan extends CI_Controller {
 
     public function simpan_iklan_lowongan()
     {
+        $config['upload_path'] = 'assets/uploads';
+        $config['allowed_types'] = 'jpg|jpeg|png|svg';
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        // Do upload Gambar Iklan
+        if($this->upload->do_upload('gambar_iklan')) {
+           $fileData = $this->upload->data();
+           $aksi_simpan = $this->input->post('aksi');
+           $data = array(
+               'judul_iklan'        => $this->input->post('judul_iklan'),
+               'deskripsi_iklan'    => $this->input->post('deskripsi_iklan'),
+               'status_iklan'       => $this->input->post('status_iklan'),
+               'tanggal_iklan'      => date("Y-m-d h:m:s", strtotime($this->input->post('tanggal_iklan'))),
+               'batas_waktu'        => date("Y-m-d h:m:s", strtotime($this->input->post('batas_waktu'))),
+               'gambar_iklan'       => $fileData['file_name']
+           );
 
-        $aksi_simpan = $this->input->post('aksi');
-        
-        $data = array(
-            'judul_iklan'               => $this->input->post('judul_iklan'),
-            'deskripsi_iklan'          	=> $this->input->post('deskripsi_iklan'),
-            'status_iklan'             	=> $this->input->post('status_iklan'),
-            'tanggal_iklan'             => $this->input->post('tanggal_iklan'),
-            'batas_waktu'             	=> $this->input->post('batas_waktu'),
-            'gambar_iklan'             	=> $this->input->post('gambar_iklan'),
-            'pos_id'                 	=> $this->input->post('pos_id')
-        );
+           // jika aksinya tambah
+           if ($aksi_simpan == 'tambah') {
+               $simpan = $this->Model_iklan_lowongan->simpan_iklan_lowongan($data);
+           }elseif ($aksi_simpan == 'ubah') {
+           // jika aksinya ubah
+               $where = array('iklan_id' => $this->input->post('iklan_id'));
+               $simpan = $this->Model_iklan_lowongan->ubah_iklan_lowongan($where, $data);
+           }
 
-        // jika aksinya tambah
-        if ($aksi_simpan == 'tambah') {
+           if ($simpan) {
+               $this->session->set_flashdata('message1', '
+                   <div class="ui positive message">
+                       <i class="close icon"></i>
+                       <div class="header">
+                           Berhasil
+                       </div>
+                       <p>Iklan berhasil ditambahkan.</p>
+                   </div>
+                   ');
+               redirect (base_url('admin/iklan_lowongan'));
+           }else{
+               $this->session->set_flashdata('message1', '
+                   <div class="ui negative message">
+                       <i class="close icon"></i>
+                       <div class="header">
+                           Gagal
+                       </div>
+                       <p>Iklan Divisi gagal ditambahkan.</p>
+                   </div>
+                   ');
+               redirect (base_url('admin/iklan_lowongan'));
+           }
 
-            $simpan = $this->Model_iklan_lowongan->simpan_iklan_lowongan($data);
-
-        }elseif ($aksi_simpan == 'ubah') {
-        // jika aksinya ubah
-            $where = array('iklan_id' => $this->input->post('iklan_id'));
-
-            $simpan = $this->Model_iklan_lowongan->ubah_iklan_lowongan($where, $data);
+        }else{ // Jika upload Error -> Tampilkan Error
+           echo $this->upload->display_errors();
         }
-
-        if ($simpan) {
-            $this->session->set_flashdata('message1', '
-                <div class="ui positive message">
-                    <i class="close icon"></i>
-                    <div class="header">
-                        Berhasil
-                    </div>
-                    <p>Iklan berhasil ditambahkan.</p>
-                </div>
-                ');
-            redirect (base_url('admin/iklan_lowongan'));
-        }else{
-            $this->session->set_flashdata('message1', '
-                <div class="ui negative message">
-                    <i class="close icon"></i>
-                    <div class="header">
-                        Gagal
-                    </div>
-                    <p>Iklan Divisi gagal ditambahkan.</p>
-                </div>
-                ');
-            redirect (base_url('admin/iklan_lowongan'));
-        }
-
     }
 
     public function hapus_posisi($iklan_id = null)

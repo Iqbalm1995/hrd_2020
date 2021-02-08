@@ -14,7 +14,7 @@
                                     <!-- <div class="ui divider"></div> -->
                                     <input type="hidden" name="aksi" value="<?php echo $aksi; ?>">
                                     <input type="hidden" name="iklan_id" value="<?php echo $iklan_id; ?>">
-                                    <input type="text" name="status_iklan" value="<?php echo $status_iklan; ?>">
+                                    <input type="hidden" name="status_iklan" value="<?php echo $status_iklan; ?>">
                                     <div class="field">
                                         <label>Judul Iklan</label>
                                         <input type="text" name="judul_iklan" placeholder="Isi Judul Iklan..." value="<?php echo $judul_iklan; ?>" required>

@@ -33,7 +33,7 @@ CREATE TABLE `divisi` (
   `deskripsi_divisi` text DEFAULT NULL,
   `status_divisi` char(1) NOT NULL DEFAULT '1',
   `hapus` char(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `divisi`
@@ -58,7 +58,7 @@ CREATE TABLE `hak_akses` (
   `deskripsi_akses` text DEFAULT NULL,
   `status_akses` char(1) NOT NULL DEFAULT '1',
   `hapus` char(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hak_akses`
@@ -84,7 +84,7 @@ CREATE TABLE `hasil_tes_pelamar` (
   `skor_wawancara` int(3) NOT NULL DEFAULT 0,
   `skor_tes` int(3) NOT NULL DEFAULT 0,
   `status_hasil_tes` char(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE `iklan_lowongan` (
   `batas_waktu` datetime DEFAULT NULL,
   `gambar_iklan` varchar(200) DEFAULT NULL,
   `hapus` char(1) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `iklan_lowongan`
@@ -133,7 +133,7 @@ CREATE TABLE `pelamar` (
   `gambar_sertifikat_pelatihan` varchar(200) NOT NULL,
   `gambar_catatan_kerja` varchar(200) NOT NULL,
   `hapus` char(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -150,7 +150,7 @@ CREATE TABLE `pengguna` (
   `email` varchar(200) NOT NULL,
   `status_pengguna` char(1) NOT NULL DEFAULT '1',
   `hapus` char(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `pengguna`
@@ -176,7 +176,7 @@ CREATE TABLE `perekrutan` (
   `kapasitas` int(4) NOT NULL DEFAULT 1,
   `terisi` int(4) NOT NULL DEFAULT 0,
   `hapus` char(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -188,7 +188,7 @@ CREATE TABLE `perekrutan_pelamar` (
   `pelamar_id` int(11) NOT NULL,
   `rekrut_id` int(11) NOT NULL,
   `status_pelamar` char(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -203,7 +203,7 @@ CREATE TABLE `posisi` (
   `deskripsi_posisi` text DEFAULT NULL,
   `status_posisi` char(1) NOT NULL DEFAULT '1',
   `hapus` char(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posisi`
@@ -224,7 +224,7 @@ INSERT INTO `posisi` (`pos_id`, `divisi_id`, `nama_posisi`, `deskripsi_posisi`, 
 CREATE TABLE `tes_perekrutan` (
   `rekrut_id` int(11) NOT NULL,
   `tes_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -238,7 +238,7 @@ CREATE TABLE `tes_ujian` (
   `deskripsi_tes` text DEFAULT NULL,
   `status_tes` char(1) NOT NULL DEFAULT '1',
   `hapus` char(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tes_ujian`
