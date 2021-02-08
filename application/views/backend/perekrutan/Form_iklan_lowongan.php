@@ -14,6 +14,7 @@
                                     <!-- <div class="ui divider"></div> -->
                                     <input type="hidden" name="aksi" value="<?php echo $aksi; ?>">
                                     <input type="hidden" name="iklan_id" value="<?php echo $iklan_id; ?>">
+                                    <input type="text" name="status_iklan" value="<?php echo $status_iklan; ?>">
                                     <div class="field">
                                         <label>Judul Iklan</label>
                                         <input type="text" name="judul_iklan" placeholder="Isi Judul Iklan..." value="<?php echo $judul_iklan; ?>" required>
@@ -22,15 +23,37 @@
                                         <label>Deskripsi</label>
                                         <textarea rows="4" name="deskripsi_iklan" placeholder="Isi Deskripsi..."><?php echo $deskripsi_iklan; ?></textarea>
                                     </div>
-
-
                                     <div class="field">
-                                        <label>Status</label>
-                                        <select name="status_pengguna" required>
-                                            <option value="1" <?= ( $status_pengguna == '1' ? 'selected' : '' ); ?>>Aktif</option>
-                                            <option value="0" <?= ( $status_pengguna == '0' ? 'selected' : '' ); ?>>Tidak Aktif</option>
-                                        </select>
+                                        <label>Tanggal Buka Iklan Lowongan</label>
+                                        <div class="ui calendar" id="tanggal_iklan">
+                                            <div class="ui input left icon">
+                                                <i class="calendar icon"></i>
+                                                <input type="text" name="tanggal_iklan" value="<?php echo $tanggal_iklan; ?>">
+                                            </div>
+                                            <script>
+                                                $('#tanggal_iklan').calendar({type: 'datetime'});
+                                            </script>
+                                        </div>
                                     </div>
+                                    <div class="field">
+                                        <label>Tanggal Batas Waktu Iklan Lowongan</label>
+                                        <div class="ui calendar" id="batas_waktu">
+                                            <div class="ui input left icon">
+                                                <i class="calendar icon"></i>
+                                                <input type="text" name="batas_waktu" value="<?php echo $batas_waktu; ?>">
+                                            </div>
+                                            <script>
+                                                $('#batas_waktu').calendar({type: 'datetime'});
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="ui button" for="opsional">
+                                            Upload Gambar Iklan
+                                        </label>
+                                        <input type="file" class="inputfile" name="gambar_iklan" id="opsional" />
+                                    </div>
+
                                 </div>
                                 <br>
                                 <button type="submit" class="ui primary button"><i class="save icon"></i>SIMPAN</button>

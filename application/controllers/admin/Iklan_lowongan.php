@@ -66,7 +66,7 @@ class Iklan_lowongan extends CI_Controller {
             'tanggal_iklan'            	=> set_value('tanggal_iklan'),
             'batas_waktu'            	=> set_value('batas_waktu'),
             'gambar_iklan'            	=> set_value('gambar_iklan'),
-            'pos_id'                 	=> set_value('pos_id')
+            'pos_id'                 	=> set_value('pos_id', '0')
         );
 
         $data['data_list_posisi'] = $this->data_list_posisi();
