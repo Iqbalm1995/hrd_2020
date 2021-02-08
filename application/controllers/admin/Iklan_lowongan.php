@@ -47,10 +47,21 @@ class Iklan_lowongan extends CI_Controller {
 
     public function detail_iklan_lowongan($iklan_id)
     {
-        $data = $this->Model_iklan_lowongan->detail_iklan_lowongan($iklan_id);
-        echo "<pre>";
-        print_r($data);
-        return $data;
+        $ret = $this->Model_iklan_lowongan->detail_iklan_lowongan($iklan_id);
+        $data['detail'] = $this->Model_iklan_lowongan->detail_iklan_lowongan($iklan_id);
+        $data['title'] = 'DATA LOWONGAN PER IKLAN';
+        $data['redirect'] = $iklan_id;
+        $data['hapus'] = base_url('admin/iklan_lowongan/hapus_lowongan_periklan/');
+        $data['urltambah'] = base_url('admin/iklan_lowongan/tambah_lowongan_periklan/').$iklan_id;
+        $data['urleditperiklan'] = base_url('admin/iklan_lowongan/ubah_lowongan_periklan/');
+        $data['urlback'] = base_url('admin/iklan_lowongan');
+        $data['result'] = $this->Model_iklan_lowongan->ambil_lowongan_periklan($iklan_id);
+        // view halaman
+        $this->load->view('backend/templates/header', $data);
+        $this->load->view('backend/templates/sidebar');
+        $this->load->view('backend/perekrutan/detail_iklan_lowongan', $data);
+        $this->load->view('backend/templates/footer');
+        return $ret;
     }
 
     public function tambah_iklan_lowongan()
@@ -193,7 +204,16 @@ class Iklan_lowongan extends CI_Controller {
            }
 
         }else{ // Jika upload Error -> Tampilkan Error
-           echo $this->upload->display_errors();
+            $this->session->set_flashdata('message1', '
+                   <div class="ui negative message">
+                       <i class="close icon"></i>
+                       <div class="header">
+                           Gagal '.$this->upload->display_errors().'
+                       </div>
+                       <p>Iklan Divisi gagal ditambahkan.</p>
+                   </div>
+                   ');
+            redirect (base_url('admin/iklan_lowongan'));
         }
     }
 
@@ -257,6 +277,72 @@ class Iklan_lowongan extends CI_Controller {
             redirect (base_url('admin/iklan_lowongan'));
 
         }
+    }
+
+    public function tambah_lowongan_periklan($id_iklan)
+    {
+        $data['title'] = 'TAMBAH LOWONGAN PERIKLAN';
+        $data['action'] = base_url('admin/iklan_lowongan/simpan_lowongan_periklan');
+        $data['batal']  = base_url('admin/iklan_lowongan/detail_iklan_lowongan/');
+        $data['posisi']  = $this->Model_iklan_lowongan->ambil_posisi();
+        $data['save'] = 'tambah';
+        $data['iklan_id'] = $id_iklan;
+        $this->load->view('backend/templates/header', $data);
+        $this->load->view('backend/templates/sidebar');
+        $this->load->view('backend/perekrutan/form_lowongan_periklan', $data);
+        $this->load->view('backend/templates/footer');
+    }
+
+    public function ubah_lowongan_periklan($rekrut_id)
+    {
+        $data['title'] = 'UBAH LOWONGAN PERIKLAN';
+        $data['action'] = base_url('admin/iklan_lowongan/simpan_lowongan_periklan');
+        $data['batal']  = base_url('admin/iklan_lowongan/detail_iklan_lowongan/');
+        $data['posisi']  = $this->Model_iklan_lowongan->ambil_posisi();
+        $data['save'] = 'ubah';
+        $data['result'] = $this->Model_iklan_lowongan->ambil_rekrut_byid($rekrut_id);
+        $this->load->view('backend/templates/header', $data);
+        $this->load->view('backend/templates/sidebar');
+        $this->load->view('backend/perekrutan/form_lowongan_periklan', $data);
+        $this->load->view('backend/templates/footer');
+    }
+
+    public function simpan_lowongan_periklan()
+    {
+        $iklan_id = $this->input->post('iklan_id');
+
+        $aksi_simpan = $this->input->post('save');
+        if ($aksi_simpan == 'tambah') {
+            $data = array(
+               'iklan_id'           => $iklan_id,
+               'pos_id'             => $this->input->post('pos_id'),
+               'deskripsi_rekrut'   => $this->input->post('deskripsi_rekrut'),
+               'kapasitas'          => $this->input->post('kapasitas')
+            );
+            $this->Model_iklan_lowongan->simpan_lowongan_periklan($data);
+            redirect(base_url('/admin/iklan_lowongan/detail_iklan_lowongan/').$iklan_id);
+        }else{
+            $data = array(
+               'deskripsi_rekrut'   => $this->input->post('deskripsi_rekrut'),
+               'kapasitas'          => $this->input->post('kapasitas')
+            );
+            $where = array(
+               'rekrut_id'           => $this->input->post('rekrut_id')
+            );
+            $this->Model_iklan_lowongan->ubah_lowongan_periklan($where, $data);
+            redirect(base_url('/admin/iklan_lowongan/detail_iklan_lowongan/').$iklan_id);
+        }
+    }
+
+    public function hapus_lowongan_periklan($rekrut_id)
+    {
+        $data = array(
+           'hapus' => '1'
+        );
+        $where = array(
+           'rekrut_id' => $rekrut_id
+        );
+        $this->Model_iklan_lowongan->ubah_lowongan_periklan($where, $data);
     }
 
 }
