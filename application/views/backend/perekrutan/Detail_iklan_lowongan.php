@@ -88,10 +88,9 @@
 							            <th>NO</th>
 							            <th>NAMA POSISI</th>
 							            <th>NAMA DIVISI</th>
-							            <th>DESKRIPSI PEREKRUTAN</th>
-							            <th style="text-align: center;">STATUS PEREKRUTAN</th>
 							            <th>KAPASITAS</th>
 							            <th>TERISI</th>
+							            <th style="text-align: center;">STATUS PEREKRUTAN</th>
 							            <th style="text-align: center;">AKSI</th>
 							        </tr>
 							    </thead>
@@ -99,24 +98,23 @@
 						    	<?php $no=1; foreach ($result as $r) {
 									switch ($r->status_rekrut) {
 						    			case '0':
-						    				$status_rekrut = '<a class="ui green label">Open</a>';
+						    				$status_rekrut = '<a class="ui green label">Buka</a>';
 						    				break;
 						    			case '2':
-						    				$status_rekrut = '<a class="ui red label">Full</a>';
+						    				$status_rekrut = '<a class="ui red label">Penuh</a>';
 						    				break;
 						    			default:
-						    				$status_rekrut = '<a class="ui black label">Closed</a>';
+						    				$status_rekrut = '<a class="ui black label">Tutup</a>';
 						    				break;
 						    		}
 						    	?>
 						    		<tr>
-							    	    <td><?= $no++; ?></td>
+							    	    <td style="text-align: center;"><?= $no++; ?></td>
 							    	    <td><?= $r->nama_posisi; ?></td>
 							    	    <td><?= $r->nama_divisi; ?></td>
-							    	    <td><?= $r->deskripsi_rekrut; ?></td>
+							    	    <td style="text-align: center;"><?= $r->kapasitas; ?></td>
+							    	    <td style="text-align: center;"><?= $r->terisi; ?></td>
 							    	    <td style="text-align: center;"><?= $status_rekrut; ?></td>
-							    	    <td><?= $r->kapasitas; ?></td>
-							    	    <td><?= $r->terisi; ?></td>
 							    	    <td style="text-align: center;">
 							    	    	<div class="ui buttons">
 							    	    	  <a href="<?= $urleditperiklan.$r->rekrut_id ?>" class="ui green button"><i class="pen icon"></i></a>

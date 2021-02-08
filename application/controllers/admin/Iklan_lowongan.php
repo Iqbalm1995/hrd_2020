@@ -53,7 +53,7 @@ class Iklan_lowongan extends CI_Controller {
         $data['redirect'] = $iklan_id;
         $data['hapus'] = base_url('admin/iklan_lowongan/hapus_lowongan_periklan/');
         $data['urltambah'] = base_url('admin/iklan_lowongan/tambah_lowongan_periklan/').$iklan_id;
-        $data['urleditperiklan'] = base_url('admin/iklan_lowongan/ubah_iklan_lowongan/');
+        $data['urleditperiklan'] = base_url('admin/iklan_lowongan/ubah_lowongan_periklan/');
         $data['urlback'] = base_url('admin/iklan_lowongan');
         $data['result'] = $this->Model_iklan_lowongan->ambil_lowongan_periklan($iklan_id);
         // view halaman
@@ -378,6 +378,7 @@ class Iklan_lowongan extends CI_Controller {
                'iklan_id'           => $iklan_id,
                'pos_id'             => $this->input->post('pos_id'),
                'deskripsi_rekrut'   => $this->input->post('deskripsi_rekrut'),
+               'status_rekrut'      => $this->input->post('status_rekrut'),
                'kapasitas'          => $this->input->post('kapasitas')
             );
             $this->Model_iklan_lowongan->simpan_lowongan_periklan($data);
@@ -385,6 +386,7 @@ class Iklan_lowongan extends CI_Controller {
         }else{
             $data = array(
                'deskripsi_rekrut'   => $this->input->post('deskripsi_rekrut'),
+               'status_rekrut'      => $this->input->post('status_rekrut'),
                'kapasitas'          => $this->input->post('kapasitas')
             );
             $where = array(
