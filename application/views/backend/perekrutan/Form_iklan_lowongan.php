@@ -57,7 +57,7 @@
                                 </div>
                                 <br>
                                 <button type="submit" class="ui primary button"><i class="save icon"></i>SIMPAN</button>
-                                <a class="ui button" href="<?php echo base_url('admin/pengguna/'); ?>"><i class="cancel icon"></i>BATAL</a>
+                                <a class="ui button" href="<?php echo base_url('admin/iklan_lowongan/'); ?>"><i class="cancel icon"></i>BATAL</a>
                             </div>
                         </form>
 					</div>

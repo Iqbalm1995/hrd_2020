@@ -13,6 +13,7 @@
 								if (empty($result)) {
 									$deskripsi	= "";
 									$kapasitas	= "";
+									$statusRekrut	= "";
 									$kembaliId	= $iklan_id?>
 									<input type="hidden" name="iklan_id" value="<?= $iklan_id; ?>"><?php
 								}else {
@@ -21,6 +22,7 @@
 										$kapasitas	= $r->kapasitas; 
 										$kembaliId	= $r->iklan_id;
 										$rekrutId 	= $r->rekrut_id;
+										$statusRekrut = $r->status_rekrut;
 										$iklanId 	= $r->iklan_id?>
 										<input type="hidden" name="rekrut_id" value="<?= $rekrutId; ?>">
 										<input type="hidden" name="iklan_id" value="<?= $iklanId; ?>"><?php
@@ -56,6 +58,14 @@
 		                                <label>DESKRIPSI</label>
 		                                <textarea name="deskripsi_rekrut"><?= $deskripsi ?></textarea>
 		                            </div>
+                                    <div class="field">
+                                        <label>STATUS LOWONGAN POSISI</label>
+                                        <select name="status_rekrut" required>
+                                            <option value="0" <?= ( $statusRekrut == '0' ? 'selected' : '' ); ?>>Buka</option>
+                                            <option value="1" <?= ( $statusRekrut == '1' ? 'selected' : '' ); ?>>Tutup</option>
+                                            <option value="2" <?= ( $statusRekrut == '2' ? 'selected' : '' ); ?>>Penuh</option>
+                                        </select>
+                                    </div>
 			                    </div>
 			                    <br>
 			                    <button class="ui blue button">
