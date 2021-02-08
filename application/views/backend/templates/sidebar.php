@@ -84,7 +84,7 @@
 								<img src="<?= base_url('/assets/'); ?>images/user.png" id="sidebar-image">
 							</div>
 							<a class="item" href="<?= base_url('admin/dashboard'); ?>"><i class="dashboard icon"></i> DASHBOARD</a>
-							<a class="item" href="<?= base_url('admin/kandidat'); ?>"><i class="table icon"></i> DATA KANDIDAT</a>
+							<a class="item" href="<?= base_url('admin/pelamar'); ?>"><i class="table icon"></i> DATA KANDIDAT</a>
 							<a class="item" href="<?= base_url('admin/iklan_lowongan'); ?>"><i class="table icon"></i>IKLAN LOWONGAN</a>
 							
 							<!-- NEW MENU -->

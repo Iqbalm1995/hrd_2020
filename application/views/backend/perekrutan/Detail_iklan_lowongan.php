@@ -11,9 +11,6 @@
 						<!-- BEGIN DATATABLE -->
 						<div class="ui stacked segment">
 							<div class="">
-								<a href="<?= $urlback; ?>" class="ui right floated button">
-									<i class="arrow left icon"></i>KEMBALI
-								</a>
 								<?php 
 								switch ($detail->status_iklan) {
 					    			case '1':
@@ -77,6 +74,9 @@
 								<div class="ui clearing segment">
 									<a href="<?= $urltambah ?>" class="ui blue right floated button">
 										<i class="plus icon"></i>TAMBAH LOWONGAN
+									</a>
+									<a href="<?= $urlback; ?>" class="ui right floated button">
+										<i class="arrow left icon"></i>KEMBALI
 									</a>
 								</div>
 								<div class="ui blue right ribbon icon label"><?= $title; ?></div>
