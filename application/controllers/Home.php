@@ -46,9 +46,9 @@ class Home extends CI_Controller {
 		$data = array(
 			'nama_pelamar' => $this->input->post('nama_pelamar'),
 			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-			'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+			'tanggal_lahir' => date("Y-m-d h:m:s", strtotime($this->input->post('tanggal_lahir'))),
 			'tempat_lahir' => $this->input->post('tempat_lahir'),
-			'status_menikah' => $this->input->post('status_manikah'),
+			'status_menikah' => $this->input->post('status_menikah'),
 			'agama' => $this->input->post('agama'),
 			'alamat' => $this->input->post('alamat'),
 			'no_hp' => $this->input->post('no_hp'),
