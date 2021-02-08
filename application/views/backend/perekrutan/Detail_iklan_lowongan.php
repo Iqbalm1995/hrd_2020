@@ -7,73 +7,78 @@
 				<div class="ui divider"></div>
 				<div class="ui grid">
 					<div class="sixteen wide computer sixteen wide phone centered column">
+						<?php echo $this->session->userdata('message1') <> '' ? $this->session->userdata('message1') : ''; ?>
 						<!-- BEGIN DATATABLE -->
 						<div class="ui stacked segment">
 							<div class="">
-								<a href="<?= $urltambah ?>" class="ui blue right floated button">
-									<i class="plus icon"></i>TAMBAH LOWONGAN
-								</a>
 								<a href="<?= $urlback; ?>" class="ui right floated button">
 									<i class="arrow left icon"></i>KEMBALI
 								</a>
-								<div class="ui blue ribbon icon label">TABEL DATA IKLAN</div>
-								<br><br>
-								<table class="ui celled table">
-									<thead>
-										<tr>
-											<th>NAMA IKLAN</th>
-											<th>DESKRIPSI IKLAN</th>
-											<th>STATUS IKLAN</th>
-											<th>TANGGAL DIBUKA</th>
-											<th>TANGGAL DITUTUP</th>
-											<th style="text-align: center;">AKSI</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php 
-										switch ($detail->status_iklan) {
-							    			case '1':
-							    				$status_iklan = '<a class="ui green label">Buka</a>';
-							    				break;
-							    			case '2':
-							    				$status_iklan = '<a class="ui red label">Tutup</a>';
-							    				break;
-							    			case '3':
-							    				$status_iklan = '<a class="ui grey label">Luar Batas Waktu</a>';
-							    				break;
-							    			case '4':
-							    				$status_iklan = '<a class="ui blue label">Publikasi</a>';
-							    				break;
-							    			
-							    			default:
-							    				$status_iklan = '<a class="ui orange label">Draft</a>';
-							    				break;
-							    			}
-							    		?>
-										<tr>
-											<td><?= $detail->judul_iklan; ?></td>
-								    	    <td><?= $detail->deskripsi_iklan; ?></td>
-								    	    <td><?= $status_iklan; ?></td>
-								    	    <td><?= $detail->tanggal_iklan; ?></td>
-								    	    <td><?= $detail->batas_waktu; ?></td>
-								    	    <td style="text-align: center;">
-								    	    	<div class="ui buttons">
-								    	    	  <a class="ui green button"><i class="thumbs up icon"></i></a>
-								    	    	  <div class="or" data-text="/"></div>
-								    	    	  <a class="ui red button"><i class="thumbs down icon"></i></a>
-								    	    	  <div class="or" data-text="/"></div>
-								    	    	  <a class="ui gray button"><i class="times icon"></i></a>
-								    	    	  <div class="or" data-text="/"></div>
-								    	    	  <a class="ui blue button"><i class="paper plane icon"></i></a>
-								    	    	</div>
-								    	    </td>
-										</tr>
-									</tbody>
-								</table>
-								<br>
+								<?php 
+								switch ($detail->status_iklan) {
+					    			case '1':
+					    				$status_iklan = '<a class="ui green label">Buka</a>';
+					    				break;
+					    			case '2':
+					    				$status_iklan = '<a class="ui red label">Tutup</a>';
+					    				break;
+					    			case '3':
+					    				$status_iklan = '<a class="ui grey label">Luar Batas Waktu</a>';
+					    				break;
+					    			case '4':
+					    				$status_iklan = '<a class="ui blue label">Publikasi</a>';
+					    				break;
+					    			
+					    			default:
+					    				$status_iklan = '<a class="ui orange label">Draft</a>';
+					    				break;
+					    			}
+					    		?>
+
+								<div class="ui clearing segment">
+									<div class="ui items">
+									  <div class="item">
+									    <div class="image">
+									      <img src="<?= base_url().'/assets/uploads/'.$detail->gambar_iklan; ?>">
+									    </div>
+									    <div class="content">
+									      <a class="header"><?= $detail->judul_iklan; ?></a>
+									      <div class="meta">
+									        <span>Status : <?= $status_iklan; ?> | Waktu : <?= $detail->tanggal_iklan; ?> s/d <?= $detail->batas_waktu; ?></span>
+									      </div>
+									      <div class="description">
+									        <p><?= $detail->deskripsi_iklan; ?></p>
+									      </div>
+									      <div class="extra">
+									      	Update Status Posting <br>
+									        <div class="ui buttons">
+							    	    	  <a class="ui green button" href="<?= base_url('admin/iklan_lowongan/ubah_status_iklan/'.$detail->iklan_id.'/1') ?>">Buka Lowongan</i></a>
+							    	    	  <div class="or" data-text="/"></div>
+							    	    	  <a class="ui red button" href="<?= base_url('admin/iklan_lowongan/ubah_status_iklan/'.$detail->iklan_id.'/2') ?>">Tutup Lowongan</i></a>
+							    	    	  <div class="or" data-text="/"></div>
+							    	    	  <a class="ui gray button" href="<?= base_url('admin/iklan_lowongan/ubah_status_iklan/'.$detail->iklan_id.'/3') ?>">Luar Batas Waktu</a>
+							    	    	  <div class="or" data-text="/"></div>
+							    	    	  <a class="ui blue button" href="<?= base_url('admin/iklan_lowongan/ubah_status_iklan/'.$detail->iklan_id.'/4') ?>">Publikasi</a>
+							    	    	</div>
+											<a href="<?= base_url('admin/iklan_lowongan/ubah_iklan_lowongan/'.$detail->iklan_id) ?>" class="ui teal right floated button">
+												<i class="pencil icon"></i>UBAH IKLAN
+											</a>
+									      </div>
+									    </div>
+									  </div>
+									</div>
+								</div>
+
+								<div class="ui divider"></div>
+								
+								<div class="ui clearing segment">
+									<a href="<?= $urltambah ?>" class="ui blue right floated button">
+										<i class="plus icon"></i>TAMBAH LOWONGAN
+									</a>
+								</div>
 								<div class="ui blue right ribbon icon label"><?= $title; ?></div>
-								<br><br><br>
 							</div>
+							<br>
 							<table id="example" class="ui celled table responsive nowrap unstackable" style="width:100%">
 							    <thead>
 							        <tr>

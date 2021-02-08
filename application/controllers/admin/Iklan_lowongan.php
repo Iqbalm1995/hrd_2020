@@ -53,7 +53,7 @@ class Iklan_lowongan extends CI_Controller {
         $data['redirect'] = $iklan_id;
         $data['hapus'] = base_url('admin/iklan_lowongan/hapus_lowongan_periklan/');
         $data['urltambah'] = base_url('admin/iklan_lowongan/tambah_lowongan_periklan/').$iklan_id;
-        $data['urleditperiklan'] = base_url('admin/iklan_lowongan/ubah_lowongan_periklan/');
+        $data['urleditperiklan'] = base_url('admin/iklan_lowongan/ubah_iklan_lowongan/');
         $data['urlback'] = base_url('admin/iklan_lowongan');
         $data['result'] = $this->Model_iklan_lowongan->ambil_lowongan_periklan($iklan_id);
         // view halaman
@@ -110,7 +110,7 @@ class Iklan_lowongan extends CI_Controller {
         $head['title']          = 'UBAH IKLAN LOWONGAN';
 
         // ambil data dari fungsi detail_iklan_lowongan
-        $get_data = $this->detail_iklan_lowongan($iklan_id);
+        $get_data = $this->Model_iklan_lowongan->detail_iklan_lowongan($iklan_id);
 
         if ($get_data) {
 
@@ -123,8 +123,7 @@ class Iklan_lowongan extends CI_Controller {
                 'status_iklan'             	=> set_value('status_iklan', $get_data->status_iklan),
                 'tanggal_iklan'             => set_value('tanggal_iklan', $get_data->tanggal_iklan),
                 'batas_waktu'             	=> set_value('batas_waktu', $get_data->batas_waktu),
-                'gambar_iklan'             	=> set_value('gambar_iklan', $get_data->gambar_iklan),
-                'pos_id'                 	=> set_value('pos_id', $get_data->pos_id)
+                'gambar_iklan'             	=> set_value('gambar_iklan', $get_data->gambar_iklan)
             );
 
             $data['data_list_posisi'] = $this->data_list_posisi();
@@ -132,7 +131,7 @@ class Iklan_lowongan extends CI_Controller {
             // view halaman
             $this->load->view('backend/templates/header', $head);
             $this->load->view('backend/templates/sidebar');
-            $this->load->view('backend/master/form_posisi', $data);
+            $this->load->view('backend/perekrutan/form_iklan_lowongan', $data);
             $this->load->view('backend/templates/footer');
 
         } else {
@@ -215,6 +214,68 @@ class Iklan_lowongan extends CI_Controller {
                    ');
             redirect (base_url('admin/iklan_lowongan'));
         }
+    }
+
+    public function ubah_status_iklan($iklan_id = null, $status_iklan = null)
+    {
+        if($iklan_id == null || $iklan_id == null){
+            $this->session->set_flashdata('message1', '
+                <div class="ui red message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Gagal
+                    </div>
+                    <p>Error pada saat mengambil data</p>
+                </div>
+                ');
+            redirect (base_url('admin/iklan_lowongan'));
+        }
+
+        $detail_iklan = $this->Model_iklan_lowongan->detail_iklan_lowongan($iklan_id);
+        if (empty($detail_iklan)) {
+            $this->session->set_flashdata('message1', '
+                <div class="ui red message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Gagal
+                    </div>
+                    <p>ID Iklan tidak ditemukan</p>
+                </div>
+                ');
+            redirect (base_url('admin/iklan_lowongan'));
+        }
+
+        $data = array(
+           'status_iklan'       => $status_iklan
+        );
+        // jika aksinya ubah
+        $where = array('iklan_id' => $iklan_id);
+        $simpan = $this->Model_iklan_lowongan->ubah_iklan_lowongan($where, $data);
+
+        if ($simpan) {
+           $this->session->set_flashdata('message1', '
+               <div class="ui positive message">
+                   <i class="close icon"></i>
+                   <div class="header">
+                       Berhasil
+                   </div>
+                   <p>Iklan berhasil Ubah.</p>
+               </div>
+               ');
+           redirect (base_url('admin/iklan_lowongan/detail_iklan_lowongan/'.$iklan_id));
+        }else{
+           $this->session->set_flashdata('message1', '
+               <div class="ui negative message">
+                   <i class="close icon"></i>
+                   <div class="header">
+                       Gagal
+                   </div>
+                   <p>Iklan Divisi gagal Ubah.</p>
+               </div>
+               ');
+           redirect (base_url('admin/iklan_lowongan/detail_iklan_lowongan/'.$iklan_id));
+        }
+
     }
 
     public function hapus_posisi($iklan_id = null)
