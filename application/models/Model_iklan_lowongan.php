@@ -103,9 +103,10 @@ class Model_iklan_lowongan extends CI_Model {
 	{
 		$this->db->select('tu.*');
 		$this->db->from($this->tb_tes_ujian.' tu');
-		$this->db->join($this->tb_perekrutan.' r', 'r.iklan_id = ik.iklan_id');
+		$this->db->join($this->tb_tes_perekrutan.' r', 'r.tes_id = tu.tes_id');
 		$this->db->where('r.rekrut_id', $rekrut_id);
 		$this->db->where('tu.hapus', '0');
+		$this->db->where('tu.status_tes', '1');
 		$this->db->group_by('tu.tes_id');
 		$this->db->order_by('tu.nama_tes ASC');
 		$query = $this->db->get();
@@ -149,5 +150,17 @@ class Model_iklan_lowongan extends CI_Model {
 	{
 		$this->db->update($this->tb_perekrutan, $data, $where);
 		return $this->db->affected_rows();
+	}
+
+	public function simpan_tes_lowongan($data)
+	{
+		$this->db->insert($this->tb_tes_perekrutan, $data);
+		return 'ok';
+	}
+
+	public function hapus_tes_lowongan($where)
+	{
+		$this->db->delete($this->tb_tes_perekrutan, $where);
+		return 'ok';
 	}
 }

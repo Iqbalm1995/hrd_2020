@@ -11,6 +11,7 @@ class Iklan_lowongan extends CI_Controller {
         // Load Model
         $this->load->model('Model_iklan_lowongan');
         $this->load->model('Model_posisi');
+        $this->load->model('Model_tes_ujian');
         //sesion login
         if(($this->session->userdata('status_login') != "loginactive") && ($this->session->userdata('role') != 'admin')){
 			redirect(base_url().'admin/login');
@@ -71,7 +72,8 @@ class Iklan_lowongan extends CI_Controller {
 
         $head['title'] = 'DATA TES UJIAN LOWONGAN';
 
-        $data['data_tes_perekrutan'] = $this->Model_iklan_lowongan->list_tes_perekrutan($rekrut_id);
+        $data['list_tes_ujian']       = $this->Model_tes_ujian->list_tes_ujian();
+        $data['data_tes_perekrutan']  = $this->Model_iklan_lowongan->list_tes_perekrutan($rekrut_id);
 
         // view halaman
         $this->load->view('backend/templates/header', $head);
@@ -423,6 +425,76 @@ class Iklan_lowongan extends CI_Controller {
            'rekrut_id' => $rekrut_id
         );
         $this->Model_iklan_lowongan->ubah_lowongan_periklan($where, $data);
+    }
+
+    public function tambah_tes_lowongan()
+    {
+        $rekrut_id    = $this->input->post('rekrut_id');
+        $iklan_id     = $this->input->post('iklan_id');
+
+        $data = array(
+          'rekrut_id'   => $this->input->post('rekrut_id'),
+          'tes_id'      => $this->input->post('tes_id')
+        );
+
+        $simpan =$this->Model_iklan_lowongan->simpan_tes_lowongan($data);
+
+        if ($simpan) {
+           $this->session->set_flashdata('message1', '
+               <div class="ui positive message">
+                   <i class="close icon"></i>
+                   <div class="header">
+                       Berhasil
+                   </div>
+                   <p>Iklan berhasil Ubah.</p>
+               </div>
+               ');
+           redirect (base_url('admin/iklan_lowongan/tes_ujian_rekrut/'.$iklan_id.'/'.$rekrut_id));
+        }else{
+           $this->session->set_flashdata('message1', '
+               <div class="ui negative message">
+                   <i class="close icon"></i>
+                   <div class="header">
+                       Gagal
+                   </div>
+                   <p>Iklan Divisi gagal Ubah.</p>
+               </div>
+               ');
+           redirect (base_url('admin/iklan_lowongan/tes_ujian_rekrut/'.$iklan_id.'/'.$rekrut_id));
+        }
+
+    }
+
+    public function hapus_tes_lowongan($iklan_id, $rekrut_id, $tes_id)
+    {
+        $where = array(
+           'rekrut_id'  => $rekrut_id,
+           'tes_id'     => $tes_id,
+        );
+        $hapus =$this->Model_iklan_lowongan->hapus_tes_lowongan($where);
+        if ($hapus) {
+           $this->session->set_flashdata('message1', '
+               <div class="ui positive message">
+                   <i class="close icon"></i>
+                   <div class="header">
+                       Berhasil
+                   </div>
+                   <p>Iklan berhasil hapus.</p>
+               </div>
+               ');
+           redirect (base_url('admin/iklan_lowongan/tes_ujian_rekrut/'.$iklan_id.'/'.$rekrut_id));
+        }else{
+           $this->session->set_flashdata('message1', '
+               <div class="ui negative message">
+                   <i class="close icon"></i>
+                   <div class="header">
+                       Gagal
+                   </div>
+                   <p>Iklan Divisi gagal hapus.</p>
+               </div>
+               ');
+           redirect (base_url('admin/iklan_lowongan/tes_ujian_rekrut/'.$iklan_id.'/'.$rekrut_id));
+        }
     }
 
 }
