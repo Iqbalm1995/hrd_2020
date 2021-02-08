@@ -99,16 +99,15 @@ class Model_iklan_lowongan extends CI_Model {
 		return $this->db->get()->result();
 	}
 
-	public function list_tes_perekrutan()
+	public function list_tes_perekrutan($rekrut_id)
 	{
 		$this->db->select('tu.*');
 		$this->db->from($this->tb_tes_ujian.' tu');
-		$this->db->join($this->tb_perekrutan.' r', 'r.iklan_id = ik.iklan_id', 'left');
-		$this->db->join($this->tb_posisi.' p', 'r.pos_id = p.pos_id', 'left');
-		$this->db->join($this->tb_divisi.' d', 'p.divisi_id = d.divisi_id', 'left');
-		$this->db->where('ik.hapus', '0');
-		$this->db->group_by('ik.iklan_id');
-		$this->db->order_by('ik.tanggal_iklan DESC');
+		$this->db->join($this->tb_perekrutan.' r', 'r.iklan_id = ik.iklan_id');
+		$this->db->where('r.rekrut_id', $rekrut_id);
+		$this->db->where('tu.hapus', '0');
+		$this->db->group_by('tu.tes_id');
+		$this->db->order_by('tu.nama_tes ASC');
 		$query = $this->db->get();
 
 		return $query->result();

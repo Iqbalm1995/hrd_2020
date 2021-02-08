@@ -71,11 +71,12 @@ class Iklan_lowongan extends CI_Controller {
 
         $head['title'] = 'DATA TES UJIAN LOWONGAN';
 
+        $data['data_tes_perekrutan'] = $this->Model_iklan_lowongan->list_tes_perekrutan($rekrut_id);
 
         // view halaman
         $this->load->view('backend/templates/header', $head);
         $this->load->view('backend/templates/sidebar');
-        $this->load->view('backend/perekrutan/detail_iklan_lowongan', $data);
+        $this->load->view('backend/perekrutan/detail_tes_lowongan', $data);
         $this->load->view('backend/templates/footer');
     }
 
