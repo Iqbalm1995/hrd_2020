@@ -54,6 +54,8 @@ class Tes_ujian extends CI_Controller {
             'url_proses'                => base_url('admin/tes_ujian/simpan_tes_ujian'),
             'tes_id'                    => set_value('tes_id'),
             'nama_tes'                  => set_value('nama_tes'),
+            'bobot_tes'                 => set_value('bobot_tes'),
+            'jenis_tes'                 => set_value('jenis_tes'),
             'deskripsi_tes'             => set_value('deskripsi_tes'),
             'status_tes'                => set_value('status_tes')
         );
@@ -93,6 +95,8 @@ class Tes_ujian extends CI_Controller {
                 'url_proses'                => base_url('admin/tes_ujian/simpan_tes_ujian'),
                 'tes_id'                    => set_value('tes_id', $get_data->tes_id),
                 'nama_tes'                  => set_value('nama_tes', $get_data->nama_tes),
+                'bobot_tes'                  => set_value('bobot_tes', $get_data->bobot_tes),
+                'jenis_tes'                  => set_value('jenis_tes', $get_data->jenis_tes),
                 'deskripsi_tes'             => set_value('deskripsi_tes', $get_data->deskripsi_tes),
                 'status_tes'                => set_value('status_tes', $get_data->status_tes)
             );
@@ -126,6 +130,8 @@ class Tes_ujian extends CI_Controller {
         
         $data = array(
             'nama_tes'                => $this->input->post('nama_tes'),
+            'bobot_tes'                => $this->input->post('bobot_tes'),
+            'jenis_tes'                => $this->input->post('jenis_tes'),
             'deskripsi_tes'           => $this->input->post('deskripsi_tes'),
             'status_tes'              => $this->input->post('status_tes')
         );
