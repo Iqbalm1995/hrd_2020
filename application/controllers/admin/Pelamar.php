@@ -28,6 +28,7 @@ class Pelamar extends CI_Controller {
 			'tanggal_iklan' 	=> null, 
 			'pos_id' 			=> 'all',
 			'nama_pelamar' 		=> '',
+            'status_pelamar'    => 'all',
 		);
 
         $data['data_pelamar'] 			= $this->data_pelamar($filter);
@@ -59,12 +60,14 @@ class Pelamar extends CI_Controller {
 		// $tanggal_iklan_filter 	= date("Y-m-d", strtotime($this->input->post('tanggal_iklan_filter')));
 		$tanggal_iklan_filter 	= 'all';
 		$pos_id_filter 			= $this->input->post('pos_id_filter');
-		$nama_pelamar_filter 	= $this->input->post('nama_pelamar_filter');
+        $nama_pelamar_filter    = $this->input->post('nama_pelamar_filter');
+		$status_pelamar 	    = $this->input->post('status_pelamar_filter');
 
 		$filter = array(
             'tanggal_iklan'             => (!empty($tanggal_iklan_filter) ? $tanggal_iklan_filter : null),
             'pos_id'           			=> $pos_id_filter,
-            'nama_pelamar'              => (!empty($nama_pelamar_filter) ? $nama_pelamar_filter : null)
+            'nama_pelamar'              => (!empty($nama_pelamar_filter) ? $nama_pelamar_filter : null),
+            'status_pelamar'            => $status_pelamar
         );
 
 		$head['title']                  = 'DATA PELAMAR';

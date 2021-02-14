@@ -35,6 +35,9 @@ class Model_pelamar extends CI_Model {
 		if ($filter['nama_pelamar'] != null) {
 			$this->db->like('plm.nama_pelamar', $filter['nama_pelamar']);
 		}
+		if ($filter['status_pelamar'] != 'all') {
+			$this->db->where('pp.status_pelamar', $filter['status_pelamar']);
+		}
 		$this->db->where('plm.hapus', '0');
 		$this->db->where('prt.hapus', '0');
 		$this->db->where('ik.hapus', '0');

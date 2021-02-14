@@ -18,7 +18,7 @@
 								<a href="<?= $urlback; ?>" class="ui right floated button">
 									<i class="arrow left icon"></i>KEMBALI
 								</a>
-								<div class="ui blue ribbon icon label">TABEL DATA PELAMAR</div>
+								<div class="ui blue ribbon icon label">TABEL DATA LOWONGAN</div>
 								<br><br>
 								<table class="ui celled table">
 									<thead>

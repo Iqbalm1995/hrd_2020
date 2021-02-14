@@ -3,7 +3,7 @@
 	<div class="ui container grid">
 		<div class="row">
 			<div class="fifteen wide computer sixteen wide phone centered column">
-				<h2><i class="table icon"></i> DATA PELAMAR</h2>
+				<h2><i class="table icon"></i> DATA UJIAN PELAMAR</h2>
 				<div class="ui divider"></div>
 				<div class="ui grid">
 					<div class="sixteen wide computer sixteen wide phone centered column">
@@ -42,16 +42,16 @@
 	                                        	</select>
 										    </div>
 		                                	<div class="three wide field">
-										      	<label>Filter Nama Pelamar</label>
-										      	<input type="text" name="nama_pelamar_filter" placeholder="Nama Pelamar..." value="<?php echo $nama_pelamar_filter; ?>">
+										      	<label>Filter Judul Iklan</label>
+										      	<input type="text" name="judul_iklan" placeholder="Judul Iklan..." value="<?php echo $judul_iklan; ?>">
 										    </div>
 										    <div class="three wide field">
 										      <label>Filter Status Kandidat</label>
 										      <select name="status_pelamar_filter">
 	                                            <option value="all">- Semua Status -</option>
-	                                            <option value="0">Mendaftar</option>
-	                                            <option value="1">Lulus</option>
-	                                            <option value="2">Tidak Lulus</option>
+	                                            <option value="0">Buka</option>
+	                                            <option value="1">Tutup</option>
+	                                            <option value="2">Penuh</option>
 	                                          </select>
 	                                        </div>
 										    <div class="three wide field">
@@ -67,11 +67,10 @@
 							    <thead>
 							        <tr>
 							            <th>#</th>
-							            <th>Nama Pelamar</th>
-							            <th>L/P</th>
-							            <th>TTL</th>
-							            <th>Kontak</th>
-							            <th>Posisi/Divisi</th>
+							            <th>Posisi</th>
+							            <th>Iklan Lowongan</th>
+							            <th>Kapasitas</th>
+							            <th>Terisi</th>
 							            <th>Status</th>
 							            <th>Aksi</th>
 							        </tr>
@@ -80,37 +79,36 @@
 							    	<?php
 							    		$no = 1;
 							    		// jika data kosong
-							    		if (empty($data_pelamar)) { ?>	                                    
+							    		if (empty($rekrut_pelamar)) { ?>	                                    
 							    		<tr>
-	                                        <td colspan = "8" class="warning center aligned">
+	                                        <td colspan = "7" class="warning center aligned">
 	                                            <i class="attention icon"></i> Data Belum Ada
 	                                        </td>
 	                                    </tr>
 							    	<?php }else{ 
-							    		foreach ($data_pelamar as $r) { 
-						    			switch ($r->status_pelamar) {
+							    		foreach ($rekrut_pelamar as $r) { 
+						    			switch ($r->status_rekrut) {
 						    				case '1':
-							    				$status_pelamar = '<a class="ui green label">LULUS</a>';
+							    				$status_rekrut = '<a class="ui black label">TUTUP</a>';
 						    					break;
 						    				case '2':
-							    				$status_pelamar = '<a class="ui red label">TIDAK LULUS</a>';
+							    				$status_rekrut = '<a class="ui red label">PENUH</a>';
 						    					break;
 						    				
 						    				default:
-							    				$status_pelamar = '<a class="ui blue label">MENDAFTAR</a>';
+							    				$status_rekrut = '<a class="ui green label">BUKA</a>';
 						    					break;
 						    			}
 							    		?>
 								        <tr>
 								            <td class="center aligned"><?= $no++; ?></td>
-								            <td><?= $r->nama_pelamar; ?></td>
-								            <td class="center aligned"><?= $r->jenis_kelamin; ?></td>
-								            <td><?= $r->tempat_lahir.', '.$r->tanggal_lahir; ?></td>
-								            <td><?= $r->no_hp; ?></td>
 								            <td><?= $r->nama_posisi.' ('.$r->nama_divisi.')'; ?></td>
-								            <td class="center aligned"><?= $status_pelamar; ?></td>
+								            <td><?= $r->judul_iklan; ?></td>
+								            <td class="center aligned"><?= $r->kapasitas; ?></td>
+								            <td class="center aligned"><?= $r->terisi; ?></td>
+								            <td class="center aligned"><?= $status_rekrut; ?></td>
 								            <td class="center aligned">
-									            <a class="mini ui teal button" href="<?= base_url("admin/pelamar/detail_pelamar/".$r->pelamar_id) ?>"><i class="bars icon"></i>Detail Lamaran</a>
+									            <a class="mini ui teal button" href="<?= base_url("admin/ujites_perekrutan/detail_ujites/".$r->rekrut_id) ?>"><i class="bars icon"></i>Detail Perekrutan</a>
 								            </td>
 								        </tr>
 							    	<?php } /*end foreach*/ } /*end if*/ ?>
