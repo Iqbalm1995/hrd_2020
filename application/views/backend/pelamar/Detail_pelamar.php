@@ -10,11 +10,6 @@
 						<!-- BEGIN DATATABLE -->
 						<div class="ui stacked segment">
 							<div class="">
-								<!-- <?php foreach ($show as $sh) { ?>
-								<a href="<?= $urltambah.$sh->id; ?>" class="ui blue right floated button">
-									<i class="plus icon"></i>BUAT PENGADAAN BARANG INI
-								</a>
-								<?php } ?> -->
 								<a href="<?= $urlback; ?>" class="ui right floated button">
 									<i class="arrow left icon"></i>KEMBALI
 								</a>
@@ -115,15 +110,15 @@
 							    		<td><?= $detail->no_hp ?> / <?= $detail->email?></td>
 							    		<td>
 							    			<div class="ui buttons">
-												<a href="#" class="ui blue button">KTP</a>
+												<a target="_blank" href="<?= base_url('assets/uploads/pelamar/').$detail->gambar_ktp; ?>" class="ui blue button">KTP</a>
 												<div class="or" data-text="/"></div>
-												<a href="#" class="ui teal button">FOTO</a>
+												<a target="_blank" href="<?= base_url('assets/uploads/pelamar/').$detail->gambar_foto_diri; ?>" class="ui teal button">FOTO</a>
 												<div class="or" data-text="/"></div>
-												<a href="#" class="ui violet button">CV</a>
+												<a target="_blank" href="<?= base_url('assets/uploads/pelamar/').$detail->gambar_cv; ?>" class="ui violet button">CV</a>
 												<div class="or" data-text="/"></div>
-												<a href="#" class="ui purple button">PORTFOLIO</a>
+												<a target="_blank" href="<?= base_url('assets/uploads/pelamar/').$detail->gambar_catatan_kerja; ?>" class="ui purple button">PORTFOLIO</a>
 												<div class="or" data-text="/"></div>
-												<a href="#" class="ui green button">SERTIFIKAT</a>
+												<a target="_blank" href="<?= base_url('assets/uploads/pelamar/').$detail->gambar_sertifikat_pelatihan; ?>" class="ui green button">SERTIFIKAT</a>
 								    	   	</div>
 								    	</td>
 							    	</tr>

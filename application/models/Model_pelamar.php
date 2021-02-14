@@ -73,6 +73,7 @@ class Model_pelamar extends CI_Model {
 		$this->db->join($this->tb_posisi.' pos', 'pos.pos_id = prt.pos_id', 'left');
 		$this->db->join($this->tb_divisi.' div', 'div.divisi_id = pos.divisi_id', 'left');
 		$this->db->where('plm.hapus', '0');
+		$this->db->where('plm.pelamar_id', $pelamar_id);
 		$query = $this->db->get();
 		return $query->row();
 	}
