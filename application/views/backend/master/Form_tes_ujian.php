@@ -19,6 +19,17 @@
                                         <input type="text" name="nama_tes" placeholder="Isi Nama Tes..." value="<?php echo $nama_tes; ?>" required>
                                     </div>
                                     <div class="field">
+                                        <label>Bobot Tes</label>
+                                        <input type="number" name="bobot_tes" placeholder="0" value="<?php echo $bobot_tes; ?>" required>
+                                    </div>
+                                    <div class="field">
+                                        <label>Jenis</label>
+                                        <select name="jenis_tes" required>
+                                            <option value="1" <?= ( $jenis_tes == '1' ? 'selected' : '' ); ?>>Cost</option>
+                                            <option value="0" <?= ( $jenis_tes == '0' ? 'selected' : '' ); ?>>Benefit</option>
+                                        </select>
+                                    </div>
+                                    <div class="field">
                                         <label>Deskripsi</label>
                                         <textarea rows="3" name="deskripsi_tes" placeholder="Isi Deskripsi..."><?php echo $deskripsi_tes; ?></textarea>
                                     </div>
