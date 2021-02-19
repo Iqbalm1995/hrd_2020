@@ -3,7 +3,7 @@
 	<div class="ui container grid">
 		<div class="row">
 			<div class="fifteen wide computer sixteen wide phone centered column">
-				<h2><i class="table icon"></i> DATA UJIAN PELAMAR</h2>
+				<h2><i class="table icon"></i> DATA PENILAIAN CALON KARYAWAN</h2>
 				<div class="ui divider"></div>
 				<div class="ui grid">
 					<div class="sixteen wide computer sixteen wide phone centered column">
@@ -12,7 +12,7 @@
 						<h4></h4>
 						<!-- BEGIN DATATABLE -->
 						<div class="ui stacked segment">
-							<div class="ui blue ribbon icon label">DATATABLE PELAMAR</div>
+							<div class="ui blue ribbon icon label">DATATABLE PENILAIAN CALON KARYAWAN</div>
 							<br><br>
 							<form action="<?php echo base_url('admin/pelamar/filter_pelamar/'); ?>" method="post" enctype="multipart/form-data">
 	                            <div class="ui segment">

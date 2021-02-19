@@ -84,19 +84,22 @@
 								<img src="<?= base_url('/assets/'); ?>images/user.png" id="sidebar-image">
 							</div>
 							<a class="item" href="<?= base_url('admin/dashboard'); ?>"><i class="dashboard icon"></i> DASHBOARD</a>
-							<a class="item" href="<?= base_url('admin/pelamar'); ?>"><i class="table icon"></i> DATA KANDIDAT</a>
-							<a class="item" href="<?= base_url('admin/ujites_perekrutan'); ?>"><i class="table icon"></i> UJITES KANDIDAT</a>
-							<a class="item" href="<?= base_url('admin/iklan_lowongan'); ?>"><i class="table icon"></i>IKLAN LOWONGAN</a>
-							
 							<!-- NEW MENU -->
 							<div class="ui accordion simpleaccordion item">
 							    <div class="title titleaccordion item"><i class="dropdown icon"></i> MASTER DATA</div>
 							    <div class="content contentaccordion">
-							        <a class="item itemaccordion" href="<?= base_url('admin/posisi'); ?>"><i class="th list icon"></i> POSISI</a>
-							        <a class="item itemaccordion" href="<?= base_url('admin/divisi'); ?>"><i class="th list icon"></i> DIVISI</a>
-							        <a class="item itemaccordion" href="<?= base_url('admin/tes_ujian'); ?>"><i class="th list icon"></i> TES UJIAN</a>
+							        <a class="item itemaccordion" href="<?= base_url('admin/divisi'); ?>"><i class="th list icon"></i> DATA DIVISI</a>
+							        <a class="item itemaccordion" href="<?= base_url('admin/posisi'); ?>"><i class="th list icon"></i> DATA POSISI</a>
+							        <a class="item itemaccordion" href="<?= base_url('admin/divisi'); ?>"><i class="th list icon"></i> DATA KARYAWAN</a>
+							        <a class="item itemaccordion" href="<?= base_url('admin/tes_ujian'); ?>"><i class="th list icon"></i> DATA TES UJIAN</a>
 							    </div>
 							</div>
+
+							<a class="item" href="<?= base_url('admin/iklan_lowongan'); ?>"><i class="table icon"></i>IKLAN LOWONGAN</a>
+							<a class="item" href="<?= base_url('admin/pelamar'); ?>"><i class="table icon"></i> DATA CALON KARYAWAN</a>
+							<a class="item" href="<?= base_url('admin/ujites_perekrutan'); ?>"><i class="table icon"></i> PENILAIAN</a>
+							<a class="item" href="<?= base_url('admin/ranking'); ?>"><i class="table icon"></i>RANGKING</a>
+
 							<div class="ui accordion simpleaccordion item">
 							    <div class="title titleaccordion item"><i class="dropdown icon"></i> PENGATURAN</div>
 							    <div class="content contentaccordion">

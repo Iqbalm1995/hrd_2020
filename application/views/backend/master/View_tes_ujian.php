@@ -19,10 +19,10 @@
 						<h4></h4>
 						<!-- BEGIN DATATABLE -->
 						<div class="ui stacked segment">
-							<div class="ui blue ribbon icon label">DATATABLE TES UJIAN</div>
-							<br><br>
-							<div class="ui clearing segment">
+							<div class="">
 								<a href="<?php echo base_url('admin/tes_ujian/tambah_tes_ujian/'); ?>" class="ui right floated primary button"><i class="plus icon"></i>Tambah Tes Ujian</a>
+								<div class="ui blue ribbon icon label">DATATABLE TES UJIAN</div>
+								<br><br><br>
 							</div>
 							<br>
 							<table id="example" class="ui celled table responsive nowrap unstackable" style="width:100%">

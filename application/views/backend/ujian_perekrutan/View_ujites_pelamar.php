@@ -3,7 +3,7 @@
 	<div class="ui container grid">
 		<div class="row">
 			<div class="fifteen wide computer sixteen wide phone centered column">
-				<h2><i class="th list icon"></i><?= $title; ?></h2>
+				<h2><i class="th list icon"></i>DETAIL PENILAIAN CALON KARYAWAN</h2>
 				<div class="ui divider"></div>
 				<div class="ui grid">
 					<div class="sixteen wide computer sixteen wide phone centered column">

@@ -1,4 +1,4 @@
-<!-- BEGIN CONTEN -->
+BEGIN CONTEN -->
 <div class="right floated thirteen wide computer sixteen wide phone column" id="content">
 	<div class="ui container grid">
 		<div class="row">
@@ -15,12 +15,12 @@
 						        	<div class="row">
 						        		<div class="six wide computer column">
 						        			<div class="ui small image simpleimage itemcolor1">
-	                                            	<i class="chart bar outline icon simpleicon"></i>
+	                                            	<i class="database icon simpleicon"></i>
 	                                        </div>
 						        		</div>
 						        		<div class="ten wide computer column">
-						        			<span><h4>Page Views</h4></span>
-						        			7120 Views
+						        			<span><h4>Data Karyawan</h4></span>
+						        			1521 Data
 						        			<a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
 						        		</div>
 						        	</div>
@@ -37,12 +37,12 @@
 						        	<div class="row">
 						        		<div class="six wide computer column">
 						        			<div class="ui small image simpleimage itemcolor2">
-	                                            	<i class="inbox icon simpleicon"></i>
+	                                            	<i class="database icon simpleicon"></i>
 	                                        </div>
 						        		</div>
 						        		<div class="ten wide computer column">
-						        			<span><h4>Messages</h4></span>
-						        			2341 Messages
+						        			<span><h4>Data Posisi</h4></span>
+						        			23 Data
 						        			<a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
 						        		</div>
 						        	</div>
@@ -59,12 +59,12 @@
 						        	<div class="row">
 						        		<div class="six wide computer column">
 						        			<div class="ui small image simpleimage itemcolor3">
-	                                            	<i class="download icon simpleicon"></i>
+	                                            	<i class="database icon simpleicon"></i>
 	                                        </div>
 						        		</div>
 						        		<div class="ten wide computer column">
-						        			<span><h4>Downloads</h4></span>
-						        			5541 Downloads
+						        			<span><h4>Data Lowongan</h4></span>
+						        			6 Data
 						        			<a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
 						        		</div>
 						        	</div>
@@ -81,12 +81,12 @@
 						        	<div class="row">
 						        		<div class="six wide computer column">
 						        			<div class="ui small image simpleimage itemcolor4">
-	                                            	<i class="user icon simpleicon"></i>
+	                                            	<i class="database icon simpleicon"></i>
 	                                        </div>
 						        		</div>
 						        		<div class="ten wide computer column">
-						        			<span><h4>Users</h4></span>
-						        			9578 Users
+						        			<span><h4>Data Pelamar</h4></span>
+						        			42 Data
 						        			<a class="ui tiny label simplelable"><i class="eye icon"></i> Details</a>
 						        		</div>
 						        	</div>
@@ -97,7 +97,7 @@
 					<!-- End Users -->
 					<!-- END STATISTIC ITEM -->
 
-					<div class="eight wide computer sixteen wide phone column justifed">
+					<!-- <div class="eight wide computer sixteen wide phone column justifed">
 						<h4>EXAMPLE TITLE</h4>
 						<div class="ui divider"></div>
 						<div class="ui tall stacked segment">
@@ -106,23 +106,23 @@
 							<div class="ui divider"></div>
 							<button id="rand-multi-axis" class="ui blue button simplelable">Randomize Data</button>
 						</div>
-					</div>
+					</div> -->
 
-					<div class="eight wide computer sixteen wide phone column justifed">
+					<!-- <div class="eight wide computer sixteen wide phone column justifed">
 						<h4>EXAMPLE TITLE</h4>
 						<div class="ui divider"></div>
-						<!-- <?php 
-							$password = 'admin123';
-							$hashed_password = password_hash($password, PASSWORD_BCRYPT);
-							print_r($hashed_password); 
-						?> -->
 						<div class="ui tall stacked segment">
 							<a class="ui blue ribbon label">Chart.js Pie Chart - Examples</a>
 							<canvas id="example-pie"></canvas>
 							<div class="ui divider"></div>
 							<button id="rand-pie" class="ui blue button simplelable">Randomize Data</button>
 						</div><br>
-					</div>
+					</div> -->
+					<!-- <?php 
+						$password = 'admin123';
+						$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+						print_r($hashed_password); 
+					?> -->
 				</div>
 			</div>
 		</div>

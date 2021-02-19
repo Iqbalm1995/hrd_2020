@@ -3,100 +3,81 @@
 	<div class="ui container grid">
 		<div class="row">
 			<div class="fifteen wide computer sixteen wide phone centered column">
-				<h2><i class="table icon"></i> TABLE EXAMPLE</h2>
+				<h2><i class="table icon"></i> PERANGKINGAN CALON KARYAWAN</h2>
 				<div class="ui divider"></div>
 				<div class="ui grid">
 					<div class="sixteen wide computer sixteen wide phone centered column">
-						<div class="ui positive message">
-							<i class="close icon"></i>
-							<div class="header">
-								Great News!
+						<div class="ui stacked segment">
+							<div class="ui form">
+								<div class="fields">
+									<div class="six wide field">
+										<label for="">Filter Posisi Divisi (Posisi Yang Dilamar)</label>
+										<select name="pos_id_filter">
+										   <option value="all">- Pilih Posisi -</option>
+										   <option value="1"  >IT Support (IT)</option>
+										   <option value="3"  >IT Supervisor (IT)</option>
+										   <option value="4"  >Sales Supervisor (SALES)</option>
+										</select>
+									</div>
+									<div class="three wide field">
+								    	<label>&nbsp;</label>
+								    	<button type="submit" style="width: 100%;" class="ui primary button">Proses Ranking</button>
+									</div>
+								</div>
 							</div>
-							<p>This example page shows DataTables integrated with this template.</p>
 						</div>
-						<h4></h4>
 						<!-- BEGIN DATATABLE -->
 						<div class="ui stacked segment">
-							<div class="ui blue ribbon icon label">DATATABLE SUPPORT</div>
+							<div class="ui blue ribbon icon label">Tabel Hasil Perangkingan</div>
 							<br><br>
 							<table id="example" class="ui celled table responsive nowrap unstackable" style="width:100%">
 							    <thead>
 							        <tr>
-							            <th>First name</th>
-							            <th>Last name</th>
-							            <th>Position</th>
-							            <th>Office</th>
-							            <th>Age</th>
-							            <th>Start date</th>
-							            <th>Salary</th>
-							            <th>Extn.</th>
-							            <th>E-mail</th>
+							        	<th>Rangking</th>
+							            <th>Nama Lengkap</th>
+							            <th>L / P</th>
+							            <th>TTL</th>
+							            <th>Kontak</th>
+							            <th>Vektor S</th>
+							            <th>Vektor V</th>
 							        </tr>
 							    </thead>
 							    <tbody>
 							        <tr>
-							            <td>Tiger</td>
-							            <td>Nixon</td>
-							            <td>System Architect</td>
-							            <td>Edinburgh</td>
-							            <td>61</td>
-							            <td>2011/04/25</td>
-							            <td>$320,800</td>
-							            <td>5421</td>
-							            <td>t.nixon@datatables.net</td>
+							            <td>1</td>
+							            <td>Alex Bardy</td>
+							            <td>L</td>
+							            <td>Edinburgh, 20-Nov-1990</td>
+							            <td>alex@net.id</td>
+							            <td>86.5752</td>
+							            <td>0.367131</td>
 							        </tr>
 							        <tr>
-							            <td>Garrett</td>
-							            <td>Winters</td>
-							            <td>Accountant</td>
-							            <td>Tokyo</td>
-							            <td>63</td>
-							            <td>2011/07/25</td>
-							            <td>$170,750</td>
-							            <td>8422</td>
-							            <td>g.winters@datatables.net</td>
+							            <td>2</td>
+							            <td>Garrett Bale</td>
+							            <td>L</td>
+							            <td>Tokyo, 07-Des-1989</td>
+							            <td>bale@net.id</td>
+							            <td>74.7531</td>
+							            <td>0.316998</td>
 							        </tr>
 							        <tr>
-							            <td>Ashton</td>
-							            <td>Cox</td>
-							            <td>Junior Technical Author</td>
-							            <td>San Francisco</td>
-							            <td>66</td>
-							            <td>2009/01/12</td>
-							            <td>$86,000</td>
-							            <td>1562</td>
-							            <td>a.cox@datatables.net</td>
+							            <td>3</td>
+							            <td>Ashton Martin</td>
+							            <td>L</td>
+							            <td>San Francisco, 12-Jul-1990</td>
+							            <td>martin@net.id</td>
+							            <td>74.4872</td>
+							            <td>0.315871</td>
 							        </tr>
-							        <tr>
-							            <td>Cedric</td>
-							            <td>Kelly</td>
-							            <td>Senior Javascript Developer</td>
-							            <td>Edinburgh</td>
-							            <td>22</td>
-							            <td>2012/03/29</td>
-							            <td>$433,060</td>
-							            <td>6224</td>
-							            <td>c.kelly@datatables.net</td>
-							        </tr>
-							        <tr>
-							            <td>Airi</td>
-									            <td>Satou</td>
-									            <td>Accountant</td>
-									            <td>Tokyo</td>
-									            <td>33</td>
-									            <td>2008/11/28</td>
-									            <td>$162,700</td>
-									            <td>5407</td>
-									            <td>a.satou@datatables.net</td>
-									        </tr>
-									    </tbody>
-									</table>
-								</div>
-								<!-- END DATATABLE -->
-							</div>
+							    </tbody>
+							</table>
 						</div>
+						<!-- END DATATABLE -->
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- END CONTENT -->
+	</div>
+</div>
+<!-- END CONTENT -->

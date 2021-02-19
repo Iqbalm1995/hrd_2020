@@ -19,10 +19,10 @@
 						<h4></h4>
 						<!-- BEGIN DATATABLE -->
 						<div class="ui stacked segment">
-							<div class="ui blue ribbon icon label">DATATABLE POSISI DIVISI</div>
-							<br><br>
-							<div class="ui clearing segment">
+							<div class="">
 								<a href="<?php echo base_url('admin/posisi/tambah_posisi/'); ?>" class="ui right floated primary button"><i class="plus icon"></i>Tambah Posisi</a>
+								<div class="ui blue ribbon icon label">DATATABLE POSISI DIVISI</div>
+								<br><br><br>
 							</div>
 							<br>
 							<table id="example" class="ui celled table responsive nowrap unstackable" style="width:100%">
