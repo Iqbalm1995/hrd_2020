@@ -90,7 +90,7 @@
 							    <div class="content contentaccordion">
 							        <a class="item itemaccordion" href="<?= base_url('admin/divisi'); ?>"><i class="th list icon"></i> DATA DIVISI</a>
 							        <a class="item itemaccordion" href="<?= base_url('admin/posisi'); ?>"><i class="th list icon"></i> DATA POSISI</a>
-							        <a class="item itemaccordion" href="<?= base_url('admin/divisi'); ?>"><i class="th list icon"></i> DATA KARYAWAN</a>
+							        <a class="item itemaccordion" href="<?= base_url('admin/karyawan'); ?>"><i class="th list icon"></i> DATA KARYAWAN</a>
 							        <a class="item itemaccordion" href="<?= base_url('admin/tes_ujian'); ?>"><i class="th list icon"></i> DATA TES UJIAN</a>
 							    </div>
 							</div>
