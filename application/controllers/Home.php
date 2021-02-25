@@ -86,8 +86,8 @@ class Home extends CI_Controller {
 		);
 		$last_rekrut_id = $this->Model_pelamar->simpan_pelamar($data);
 		$data2 = array(
-			'rekrut_id' => $last_rekrut_id,
-			'status_pelamar' => '0'
+			'rekrut_id' 		=> $this->input->post('rekrut_id'),
+			'status_pelamar' 	=> '0'
 		);
 		if ($this->Model_pelamar->simpan_perekrutan_pelamar($data2)) {
 			redirect(base_url('home/'));
