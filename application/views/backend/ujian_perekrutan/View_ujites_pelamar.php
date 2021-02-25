@@ -112,7 +112,6 @@
 							        <tr>
 							            <th>NO</th>
 							            <th>NAMA TES</th>
-							            <th>SKOR WAWANCARA</th>
 							            <th>SKOR TES UJIAN</th>
 							            <th>STATUS HASIL</th>
 							            <th style="text-align: center;">AKSI</th>
@@ -142,7 +141,6 @@
 							    	<tr>
 							    		<td class="center aligned"><?= $no++; ?></td>
 							    		<td><?= $u->nama_tes ?></td>
-							    		<td class="right aligned"><?= $u->skor_wawancara ?></td>
 							    		<td class="right aligned"><?= $u->skor_tes ?></td>
 							    		<td class="center aligned"><?= $status_hasil_tes ?></td>
 							    		<td class="center aligned">

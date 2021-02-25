@@ -39,8 +39,7 @@
                                    		<input type="hidden" name="pelamar_id" value="<?php echo $pelamar_id; ?>">
                                    		<input type="hidden" name="rekrut_id" value="<?php echo $rekrut_id; ?>">
 	                                    <div class="field">
-	                                        <label>Skor Wawancara</label>
-	                                        <input type="number" name="skor_wawancara" placeholder="0" value="<?php echo $config_form['skor_wawancara']; ?>" required>
+	                                        <input type="hidden" name="skor_wawancara" placeholder="0" value="<?php echo $config_form['skor_wawancara']; ?>" required>
 	                                    </div>
 	                                    <div class="field">
 	                                        <label>Skor Tes</label>
